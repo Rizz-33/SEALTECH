@@ -4,23 +4,36 @@ import 'package:sealtech/components/theme.dart';
 
 class SignInPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   final void Function()? onTap;
 
   SignInPage({super.key, this.onTap});
 
+    void signin(BuildContext context) async {
+    //auth service
+    final authService = AuthService();
+
+    //try log in
+    try {
+      await authService.signInWithEmailPassword(_emailController.text, _passwordController.text,);
+    }
+
+    //catch any errors
+    catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ));
+    }
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    void _signIn() {
-      if (_formKey.currentState!.validate()) {
-        // Perform sign in logic here
-        String email = _emailController.text;
-        String password = _passwordController.text;
-        // TODO: Implement sign in logic
-      }
-    }
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -142,7 +155,7 @@ class SignInPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Button(
                   buttonText: 'Sign In',
-                  onPressed: _signIn,
+                  onPressed: () => signin(context),
                   color: 'orange',
                   enableIcon: false,
                   isStroked: false,
