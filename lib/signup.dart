@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
-class SignUpPage extends StatefulWidget {
-  @override
-  _SignUpPageState createState() => _SignUpPageState();
-}
+class SignUpPage extends StatelessWidget {
+  final void Function()? onTap;
 
-class _SignUpPageState extends State<SignUpPage> {
+  SignUpPage({super.key, this.onTap});
+
   final _formKey = GlobalKey<FormState>();
+
   TextEditingController _nameController = TextEditingController();
+
   TextEditingController _emailController = TextEditingController();
+
   TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -193,10 +195,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         fontSize: 13,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        
-                      },
+                    GestureDetector(
+                      onTap: onTap,
                       child: const Text(
                         'Sign In',
                         style: TextStyle(

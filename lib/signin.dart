@@ -1,36 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
-import 'package:sealtech/privacypolicy.dart';
 
-class SignInPage extends StatefulWidget {
-  @override
-  _SignInPageState createState() => _SignInPageState();
-}
-
-class _SignInPageState extends State<SignInPage> {
+class SignInPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  final void Function()? onTap;
 
-  void _signIn() {
-    if (_formKey.currentState!.validate()) {
-      // Perform sign in logic here
-      String email = _emailController.text;
-      String password = _passwordController.text;
-      // TODO: Implement sign in logic
-    }
-  }
+  SignInPage({super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    void _signIn() {
+      if (_formKey.currentState!.validate()) {
+        // Perform sign in logic here
+        String email = _emailController.text;
+        String password = _passwordController.text;
+        // TODO: Implement sign in logic
+      }
+    }
+
     return Scaffold(
       backgroundColor: bgColor,
       body: SingleChildScrollView(
@@ -170,13 +161,8 @@ class _SignInPageState extends State<SignInPage> {
                         fontSize: 13,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PrivacyPolicyPage()),
-                        );
-                      },
+                    GestureDetector(
+                      onTap : onTap,
                       child: const Text(
                         'Sign Up',
                         style: TextStyle(
