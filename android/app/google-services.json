@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "792940813419",
+    "project_id": "sealtech-366c0",
+    "storage_bucket": "sealtech-366c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792940813419:android:ccbee07145e761b96da52e",
+        "android_client_info": {
+          "package_name": "com.example.sealtech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ6yYAjn7KHk0oNxKkyaZDEiL4R8Ujstc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
