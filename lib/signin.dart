@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sealtech/Employee/navbarE.dart';
+import 'package:sealtech/client/navbar.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
@@ -10,32 +12,49 @@ class SignInPage extends StatelessWidget {
 
   final void Function()? onTap;
 
-  SignInPage({super.key, this.onTap});
+  SignInPage({Key? key, this.onTap});
 
-    void signin(BuildContext context) async {
-    //auth service
+  void signin(BuildContext context) async {
+    // auth service
     final authService = AuthService();
 
-    //try log in
+    // try log in
     try {
-      await authService.signInWithEmailPassword(_emailController.text, _passwordController.text,);
+      await authService.signInWithEmailPassword(
+        _emailController.text,
+        _passwordController.text,
+      );
+
+      // Extracting the password from user email
+      String password = _emailController.text.split('@')[0].substring(3);
+
+      // Check if the password starts with '101'
+      if (password.startsWith('101')) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavbarE()),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NavbarC()),
+        );
+      }
     }
 
-    //catch any errors
+    // catch any errors
     catch (e) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: Text(e.toString()),
-        ));
+        ),
+      );
     }
-
   }
-
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: bgColor,
       body: SingleChildScrollView(
@@ -43,7 +62,7 @@ class SignInPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              //logo
+              // logo
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: Image.asset(
@@ -53,7 +72,7 @@ class SignInPage extends StatelessWidget {
               ),
               const SizedBox(height: 60),
 
-              //sign in text
+              // sign in text
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Align(
@@ -69,7 +88,8 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              //email and password fields
+
+              // email and password fields
               Form(
                 key: _formKey,
                 child: Column(
@@ -94,7 +114,9 @@ class SignInPage extends StatelessWidget {
                           if (value!.isEmpty) {
                             return 'Please enter your email';
                           }
-                          if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(value)) {
+                          if (!RegExp(
+                                  r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$')
+                              .hasMatch(value)) {
                             return 'Please enter a valid email address';
                           }
                           return null;
@@ -103,7 +125,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: TextFormField(
                         controller: _passwordController,
                         cursorColor: accentColor,
@@ -123,7 +145,9 @@ class SignInPage extends StatelessWidget {
                           if (value!.isEmpty) {
                             return 'Please enter your password';
                           }
-                          if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$').hasMatch(value)) {
+                          if (!RegExp(
+                                  r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
+                              .hasMatch(value)) {
                             return 'Password must have at least 8 characters\nwith numbers, special characters, and letters';
                           }
                           return null;
@@ -151,7 +175,7 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
 
-              //sign in button
+              // sign in button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Button(
@@ -163,7 +187,7 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
 
-              //new to sealtech
+              // new to sealtech
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -176,7 +200,7 @@ class SignInPage extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap : onTap,
+                      onTap: onTap,
                       child: const Text(
                         'Sign Up',
                         style: TextStyle(
