@@ -9,11 +9,30 @@ class SignUpPage extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  TextEditingController _emailController = TextEditingController();
+    // signup method
+  void signup(BuildContext context) {
+    // get auth service
+    final _auth = AuthService();
 
-  TextEditingController _passwordController = TextEditingController();
+    try {
+      _auth.signInWithEmailAndPassword(
+        _emailController.text,
+        _passwordController.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -163,20 +182,7 @@ class SignUpPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Button(
                   buttonText: 'Sign Up',
-                  onPressed: () {
-      if (_formKey.currentState!.validate()) {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => SignInPage()),
-        // );
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(
-              content: Text('Please Wait...'),
-              backgroundColor: accentColor,
-            ));
-        //backend code here
-      }
-    },
+                  onPressed: () => signup(context),
                   color: 'orange',
                   enableIcon: false,
                   isStroked: false,
