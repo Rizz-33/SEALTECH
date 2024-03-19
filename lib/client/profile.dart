@@ -8,9 +8,17 @@ import 'package:sealtech/client/orderHistory.dart';
 import 'package:sealtech/client/payMethod.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
+import 'package:sealtech/services/auth/auth_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Profile extends StatelessWidget {
+
+  void logout(){
+    //get auth service
+    final auth = AuthService();
+    auth.signOut();
+  }
+  
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Padding(
@@ -243,7 +251,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 36.0),
-              Button(buttonText: 'Logout', onPressed: () {}, color: 'orange', width: 380,),
+              Button(buttonText: 'Logout', onPressed: logout, color: 'orange', width: 380,),
               SizedBox(height: 50,),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
