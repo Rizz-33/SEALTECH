@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
+import 'package:sealtech/services/auth/auth_service.dart';
 
 class SignUpPage extends StatelessWidget {
   final void Function()? onTap;
