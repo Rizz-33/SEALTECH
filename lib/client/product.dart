@@ -26,6 +26,7 @@ class ProductPage extends StatelessWidget {
         children: [
           SizedBox(
             height: 100,
+            width: 130,
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
