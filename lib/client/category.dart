@@ -35,7 +35,7 @@ class Category extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 18,
+                      width: 12,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -99,7 +99,7 @@ class Category extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -233,30 +233,30 @@ class Category extends StatelessWidget {
                   child: Row(
                     children: [
                       ProductPage(
-                          imagePath: 'lib/images/pro1.png',
-                          title: 'Swimming Pool\n(8ft)',
+                          imagePath: 'lib/images/Drill Machine.jpeg',
+                          title: 'Drill Machine',
                           subtitle: 'Service',
-                          price: '2 million LKR +'),
+                          price: '9 500 LKR'),
                       ProductPage(
-                          imagePath: 'lib/images/pro1.png',
-                          title: 'Swimming Pool\n(8ft)',
+                          imagePath: 'lib/images/Screwdriver Set.jpg',
+                          title: 'Screwdriver Set',
                           subtitle: 'Service',
-                          price: '2 million LKR +'),
+                          price: '12 500 LKR'),
                       ProductPage(
-                          imagePath: 'lib/images/pro1.png',
-                          title: 'Swimming Pool\n(8ft)',
+                          imagePath: 'lib/images/Circular Saw.jpeg',
+                          title: 'Circular Saw',
                           subtitle: 'Service',
-                          price: '2 million LKR +'),
+                          price: '5 000 LKR'),
                       ProductPage(
-                          imagePath: 'lib/images/pro1.png',
-                          title: 'Swimming Pool\n(8ft)',
+                          imagePath: 'lib/images/Adjustable Wrench.jpg',
+                          title: 'Adjustable Wrench',
                           subtitle: 'Service',
-                          price: '2 million LKR +'),
+                          price: '7 500 LKR'),
                       ProductPage(
-                          imagePath: 'lib/images/pro1.png',
-                          title: 'Swimming Pool\n(8ft)',
+                          imagePath: 'lib/images/Pipe Wrench.jpeg',
+                          title: 'Pipe Wrench',
                           subtitle: 'Service',
-                          price: '2 million LKR +'),
+                          price: '3 500 LKR'),
                     ],
                   ),
                 ),
