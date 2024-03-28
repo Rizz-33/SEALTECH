@@ -28,11 +28,15 @@ class Category extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 16,),
+                const SizedBox(
+                  height: 16,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 18,),
+                    SizedBox(
+                      width: 12,
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -76,14 +80,17 @@ class Category extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => Chat()),
+                                          MaterialPageRoute(
+                                              builder: (context) => Chat()),
                                         );
                                       },
                                       width: 150,
                                       isStroked: true,
                                       color: 'white',
                                     ),
-                                    const SizedBox(height: 16,),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -92,7 +99,7 @@ class Category extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -133,7 +140,8 @@ class Category extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Chemical()),
+                              MaterialPageRoute(
+                                  builder: (context) => Chemical()),
                             );
                           },
                           child: Stack(
@@ -165,57 +173,135 @@ class Category extends StatelessWidget {
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
-                  child: Text('Service', style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold, color: primaryColor)),
+                  child: Text('Service',
+                      style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor)),
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 6),
                   child: Row(
                     children: [
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Pool Waterproofing.jpeg',
+                          title: 'Pool Waterproofing',
+                          subtitle: 'Service',
+                          price: '3 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Roof Waterproofing.jpeg',
+                          title: 'Roof Waterproofing',
+                          subtitle: 'Service',
+                          price: '1 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Basement Sealing.webp',
+                          title: 'Basement Sealing',
+                          subtitle: 'Service',
+                          price: '1.5 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Side walls Sealing.jpeg',
+                          title: 'Side walls Sealing',
+                          subtitle: 'Service',
+                          price: '2 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Concrete Sealing.avif',
+                          title: 'Concrete Sealing',
+                          subtitle: 'Service',
+                          price: '1 million LKR +'),
                     ],
                   ),
                 ),
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
-                  child: Text('Tools', style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold, color: primaryColor)),
+                  child: Text('Tools',
+                      style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor)),
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 6),
                   child: Row(
                     children: [
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Drill Machine.jpeg',
+                          title: 'Drill Machine',
+                          subtitle: 'Service',
+                          price: '9 500 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Screwdriver Set.jpg',
+                          title: 'Screwdriver Set',
+                          subtitle: 'Service',
+                          price: '12 500 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Circular Saw.jpeg',
+                          title: 'Circular Saw',
+                          subtitle: 'Service',
+                          price: '5 000 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Adjustable Wrench.jpg',
+                          title: 'Adjustable Wrench',
+                          subtitle: 'Service',
+                          price: '7 500 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Pipe Wrench.jpeg',
+                          title: 'Pipe Wrench',
+                          subtitle: 'Service',
+                          price: '3 500 LKR'),
                     ],
                   ),
                 ),
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
-                  child: Text('Chemicals', style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold, color: primaryColor)),
+                  child: Text('Chemicals',
+                      style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor)),
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 6),
                   child: Row(
                     children: [
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                      ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
+                      ProductPage(
+                          imagePath: 'lib/images/Wood Protector.jpeg',
+                          title: 'Wood Protector',
+                          subtitle: 'Service',
+                          price: '9 500 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Waterproof Sealant.png',
+                          title: 'Waterproof Sealant',
+                          subtitle: 'Service',
+                          price: '12 500 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Surface Cleaner.jpeg',
+                          title: 'Surface Cleaner',
+                          subtitle: 'Service',
+                          price: '5 000 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Mold Inhibitor Spray.webp',
+                          title: 'Mold Inhibitor Spray',
+                          subtitle: 'Service',
+                          price: '7 500 LKR'),
+                      ProductPage(
+                          imagePath: 'lib/images/Wood Protector.jpeg',
+                          title: 'Wood Protector',
+                          subtitle: 'Service',
+                          price: '9 500 LKR'),
                     ],
                   ),
                 ),
