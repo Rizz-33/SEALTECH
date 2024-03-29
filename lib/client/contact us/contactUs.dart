@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/chat/chat/chat.dart';
-import 'package:sealtech/client/chat/components/userTile.dart';
+import 'package:sealtech/client/contact%20us/chat.dart';
+import 'package:sealtech/client/contact%20us/components/userTile.dart';
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
 import 'package:sealtech/services/chat/chat_service.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key});
+class ContactUsPage extends StatelessWidget {
+  ContactUsPage({Key? key});
 
   // Chat and auth services
   final ChatService _chatService = ChatService();
