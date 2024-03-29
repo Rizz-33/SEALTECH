@@ -208,7 +208,7 @@ class Category extends StatelessWidget {
                           subtitle: 'Service',
                           price: '2 million LKR +'),
                       ProductPage(
-                          imagePath: 'lib/images/Concrete Sealing.avif',
+                          imagePath: 'lib/images/Concrete Sealing.jpeg',
                           title: 'Concrete Sealing',
                           subtitle: 'Service',
                           price: '1 million LKR +'),
@@ -293,7 +293,7 @@ class Category extends StatelessWidget {
                           subtitle: 'Service',
                           price: '5 000 LKR'),
                       ProductPage(
-                          imagePath: 'lib/images/Mold Inhibitor Spray.webp',
+                          imagePath: 'lib/images/Mold Inhibitor Spray.jpeg',
                           title: 'Mold Inhibitor Spray',
                           subtitle: 'Service',
                           price: '7 500 LKR'),
