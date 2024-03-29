@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/chat/chat/chat_service.dart';
 import 'package:sealtech/client/chat/components/chat_bubble.dart';
 import 'package:sealtech/client/chat/components/textfield.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
+import 'package:sealtech/services/chat/chat_service.dart';
 
 
 class ChatPage extends StatefulWidget {

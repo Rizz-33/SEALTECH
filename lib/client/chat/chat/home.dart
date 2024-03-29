@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/chat/chat/chat.dart';
-import 'package:sealtech/client/chat/chat/chat_service.dart';
 import 'package:sealtech/client/chat/components/userTile.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
+import 'package:sealtech/services/chat/chat_service.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key});
