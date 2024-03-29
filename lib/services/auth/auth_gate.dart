@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sealtech/Employee/Home.dart';
-import 'package:sealtech/client/home.dart';
+import 'package:sealtech/Employee/navbarE.dart';
+import 'package:sealtech/client/navbar.dart';
 import 'package:sealtech/services/auth/sigin_or_signup.dart';
 
 class AuthGate extends StatelessWidget {
@@ -16,9 +16,9 @@ class AuthGate extends StatelessWidget {
           // user logged in
           if (snapshot.hasData) {
             if (checkUserRole(snapshot.data!)) {
-              return Home_Page();
+              return NavbarE();
             } else {
-              return Home();
+              return NavbarC();
             }
           }
           // user is not logged in
