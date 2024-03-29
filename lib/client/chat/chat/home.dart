@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/chat/chat/chat.dart';
 import 'package:sealtech/client/chat/components/userTile.dart';
+import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
 import 'package:sealtech/services/chat/chat_service.dart';
 
@@ -14,15 +15,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text(
-          'Home',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.transparent,
-        foregroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
+        title: Text('Contact Us'),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: Image.asset('lib/images/logoIconBlack.png'),
+          ),
+        ],
       ),
       body: _buildUserList(),
     );
