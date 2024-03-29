@@ -198,7 +198,7 @@ class Category extends StatelessWidget {
                           subtitle: 'Service',
                           price: '1 million LKR +'),
                       ProductPage(
-                          imagePath: 'lib/images/Basement Sealing.webp',
+                          imagePath: 'lib/images/Basement Sealing.jpeg',
                           title: 'Basement Sealing',
                           subtitle: 'Service',
                           price: '1.5 million LKR +'),
