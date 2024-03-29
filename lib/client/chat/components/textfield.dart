@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sealtech/components/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -13,23 +14,22 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
-        obscureText: obscureText,
-        controller: controller,
-        focusNode: focusNode,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16,),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
-            borderRadius: BorderRadius.circular(16)
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
-            borderRadius: BorderRadius.circular(16)
-          ),
-          hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey[500])
-        ),
-      ),
+              cursorColor: accent75,
+              decoration: InputDecoration(
+                hintText: 'Message SEALTECH...',
+                filled: true,
+                fillColor: secondaryColor,
+                contentPadding: EdgeInsets.fromLTRB(24.0, 6.0, 12.0, 6.0),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+              ),
+            ),
     );
   }
 }
