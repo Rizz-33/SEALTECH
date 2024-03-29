@@ -202,10 +202,11 @@ class SignInPage extends StatelessWidget {
                     GestureDetector(
                       onTap: onTap,
                       child: const Text(
-                        'Sign Up',
+                        '   Sign Up',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 14,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
