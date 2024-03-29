@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sealtech/client/chat.dart';
+import 'package:sealtech/client/chat/chat/home.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
@@ -122,7 +122,7 @@ class ServiceCardState extends State<ServiceCard> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Chat()),
+                          MaterialPageRoute(builder: (context) => HomePage()),
                         );
                       },
                       width: 380,

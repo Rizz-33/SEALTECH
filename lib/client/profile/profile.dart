@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/chat.dart';
+import 'package:sealtech/client/chat/chat/home.dart';
 import 'package:sealtech/client/profile/aboutUs.dart';
 import 'package:sealtech/client/profile/addFeedback.dart';
 import 'package:sealtech/client/profile/editProfile.dart';
@@ -201,7 +201,7 @@ class Profile extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Chat()),
+                        MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
