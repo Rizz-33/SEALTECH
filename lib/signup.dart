@@ -156,27 +156,8 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
 
-                //forgot password
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {
-
-                    },
-                    child: const Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 110, 110, 110),
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              
-              const SizedBox(height:20),
+                
+              SizedBox(height: 30,),
 
               //sign in button
               Padding(
@@ -189,6 +170,8 @@ class SignUpPage extends StatelessWidget {
                   isStroked: false,
                 ),
               ),
+
+              SizedBox(height: 10,),
 
               //new to sealtech
               Center(
