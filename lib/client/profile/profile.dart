@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/aboutUs.dart';
-import 'package:sealtech/client/addFeedback.dart';
-import 'package:sealtech/client/chat.dart';
-import 'package:sealtech/client/editProfile.dart';
-import 'package:sealtech/client/inviteFriends.dart';
-import 'package:sealtech/client/orderHistory.dart';
-import 'package:sealtech/client/payMethod.dart';
+import 'package:sealtech/client/chat/chat/home.dart';
+import 'package:sealtech/client/profile/aboutUs.dart';
+import 'package:sealtech/client/profile/addFeedback.dart';
+import 'package:sealtech/client/profile/editProfile.dart';
+import 'package:sealtech/client/profile/inviteFriends.dart';
+import 'package:sealtech/client/profile/orderHistory.dart';
+import 'package:sealtech/client/profile/payMethod.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
@@ -201,7 +201,7 @@ class Profile extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Chat()),
+                        MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
