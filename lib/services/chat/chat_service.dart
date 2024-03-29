@@ -37,7 +37,7 @@ class ChatService {
       senderEmail: currentUserEmail,
       receiverID: reveicerID,
       message: message,
-      timestamp: timestamp,
+      timestamp: timestamp
     );
 
 
@@ -65,7 +65,7 @@ class ChatService {
     String chatRoomID = ids.join('_');
 
     return _firestore
-    .collection("chat_rooms")
+    .collection("Contact_Us")
     .doc(chatRoomID)
     .collection("message")
     .orderBy("timestamp", descending: false)
