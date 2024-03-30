@@ -15,15 +15,16 @@ class AuthService {
   }
 
   //sign in
-  Future<UserCredential> signInWithEmailPassword(String email, password) async {
+  Future<UserCredential> signInWithEmailPassword(String email, password, String name) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
 
       // save user if it doesn't already exist
-      _firestore.collection("Users").doc(userCredential.user!.uid).set(
+      await _firestore.collection("Users").doc(userCredential.user!.uid).set(
         {
           'uid' : userCredential.user!.uid,
           'email' : email,
+          'name' : name, // Save user's name
         }
       );
 
@@ -34,7 +35,7 @@ class AuthService {
   }
 
   //sign up
-  Future<UserCredential> signInWithEmailAndPassword(String email, password) async {
+  Future<UserCredential> signUpWithEmailAndPassword(String email, password, String name) async {
     try {
       //create user
       UserCredential userCredential =
@@ -42,10 +43,11 @@ class AuthService {
       
 
       // save user
-      _firestore.collection("Users").doc(userCredential.user!.uid).set(
+      await _firestore.collection("Users").doc(userCredential.user!.uid).set(
         {
           'uid' : userCredential.user!.uid,
           'email' : email,
+          'name' : name, // Save user's name
         }
       );
 
