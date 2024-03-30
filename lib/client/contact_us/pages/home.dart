@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/contact%20us/chat.dart';
-import 'package:sealtech/client/contact%20us/components/userTile.dart';
-import 'package:sealtech/components/theme.dart';
+import 'package:sealtech/client/contact_us/components/userTile.dart';
+import 'package:sealtech/client/contact_us/pages/chat.dart';
+import 'package:sealtech/client/contact_us/services/chat/chat_service.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
-import 'package:sealtech/services/chat/chat_service.dart';
 
-class ContactUsPage extends StatelessWidget {
-  ContactUsPage({Key? key});
+class HomePage extends StatelessWidget {
+  HomePage({Key? key});
 
   // Chat and auth services
   final ChatService _chatService = ChatService();
@@ -15,15 +14,15 @@ class ContactUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text('Contact Us'),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Image.asset('lib/images/logoIconBlack.png'),
-          ),
-        ],
+        title: Text(
+          'Home',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
       ),
       body: _buildUserList(),
     );

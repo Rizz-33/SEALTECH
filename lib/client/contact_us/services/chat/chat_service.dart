@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sealtech/client/contact%20us/components/message.dart';
+import 'package:sealtech/client/contact_us/components/message.dart';
 
 class ChatService {
 
@@ -49,7 +49,7 @@ class ChatService {
 
     //add new message to database
     await _firestore
-      .collection("Contact_Us")
+      .collection("chat_rooms")
       .doc(chatRoomID)
       .collection("message")
       .add(newMessage.toMap());
@@ -65,7 +65,7 @@ class ChatService {
     String chatRoomID = ids.join('_');
 
     return _firestore
-    .collection("Contact_Us")
+    .collection("chat_rooms")
     .doc(chatRoomID)
     .collection("message")
     .orderBy("timestamp", descending: false)
