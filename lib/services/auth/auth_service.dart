@@ -6,7 +6,9 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  
+  // Stream for listening to changes in user authentication state
+  Stream<User?> get userStream => _auth.authStateChanges();
+
   //get current user
   User? getCurrentUser() {
     return _auth.currentUser;
@@ -17,7 +19,7 @@ class AuthService {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
 
-      // save user if it doesnt already exist
+      // save user if it doesn't already exist
       _firestore.collection("Users").doc(userCredential.user!.uid).set(
         {
           'uid' : userCredential.user!.uid,
@@ -53,13 +55,10 @@ class AuthService {
     }
   }
 
-
   //sign out
   Future<void> signOut() async {
     return await _auth.signOut();
   }
 
-
   //errors
-
 }
