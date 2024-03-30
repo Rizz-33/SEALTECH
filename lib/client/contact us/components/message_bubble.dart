@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sealtech/components/theme.dart';
 
 class ChatBubble extends StatelessWidget {
   final String message;
@@ -11,8 +12,8 @@ class ChatBubble extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isCurentUser
-        ? (Color.fromARGB(200, 0, 47, 167))
-        : (Colors.grey[300] ),
+        ? (primaryColor)
+        : (primary25),
         borderRadius: BorderRadius.circular(16)
       ),
       padding: EdgeInsets.all(16),
@@ -22,7 +23,7 @@ class ChatBubble extends StatelessWidget {
         style: TextStyle(
           color: isCurentUser
             ? Colors.white
-            : (Colors.black)),
+            : accentColor),
       ),
     );
   }
