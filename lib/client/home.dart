@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/client/chemicals.dart';
-import 'package:sealtech/client/contact_us/pages/home.dart';
+import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/product.dart';
 import 'package:sealtech/client/profile/feedback.dart';
 import 'package:sealtech/client/services.dart';
@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => HomePage()),
+                              MaterialPageRoute(builder: (context) => ContactUsPage()),
                             );
                           },
                           enableIcon: true,

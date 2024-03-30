@@ -44,37 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAjLdl1YWyqXisMpsorowXPU062fZYb9zA',
-    appId: '1:251528458795:web:10677d6f8398187375306e',
-    messagingSenderId: '251528458795',
-    projectId: 'sealtech-11470',
-    authDomain: 'sealtech-11470.firebaseapp.com',
-    storageBucket: 'sealtech-11470.appspot.com',
+    apiKey: 'AIzaSyBc0JKG4U5jE51XdExepa-V_D_LGdGgzas',
+    appId: '1:792940813419:web:33d7551cc419ddef6da52e',
+    messagingSenderId: '792940813419',
+    projectId: 'sealtech-366c0',
+    authDomain: 'sealtech-366c0.firebaseapp.com',
+    storageBucket: 'sealtech-366c0.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCdpSZv1no4Wlfb0yIpgtDm7okafnBJ6FU',
-    appId: '1:251528458795:android:c6c3779c6ba85b3e75306e',
-    messagingSenderId: '251528458795',
-    projectId: 'sealtech-11470',
-    storageBucket: 'sealtech-11470.appspot.com',
+    apiKey: 'AIzaSyBJ6yYAjn7KHk0oNxKkyaZDEiL4R8Ujstc',
+    appId: '1:792940813419:android:ccbee07145e761b96da52e',
+    messagingSenderId: '792940813419',
+    projectId: 'sealtech-366c0',
+    storageBucket: 'sealtech-366c0.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB3yX9qpY0CiqOXPwnwW5OOxe_hKqbcjm8',
-    appId: '1:251528458795:ios:4d522eb3f0ead04f75306e',
-    messagingSenderId: '251528458795',
-    projectId: 'sealtech-11470',
-    storageBucket: 'sealtech-11470.appspot.com',
+    apiKey: 'AIzaSyCMZDKewPFM_yxnY5a5BXDJpF-8Qd1do5s',
+    appId: '1:792940813419:ios:85c188d432e6640a6da52e',
+    messagingSenderId: '792940813419',
+    projectId: 'sealtech-366c0',
+    storageBucket: 'sealtech-366c0.appspot.com',
     iosBundleId: 'com.example.sealtech',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB3yX9qpY0CiqOXPwnwW5OOxe_hKqbcjm8',
-    appId: '1:251528458795:ios:5718031c10b6fe6c75306e',
-    messagingSenderId: '251528458795',
-    projectId: 'sealtech-11470',
-    storageBucket: 'sealtech-11470.appspot.com',
+    apiKey: 'AIzaSyCMZDKewPFM_yxnY5a5BXDJpF-8Qd1do5s',
+    appId: '1:792940813419:ios:5ebe1d13577a4c616da52e',
+    messagingSenderId: '792940813419',
+    projectId: 'sealtech-366c0',
+    storageBucket: 'sealtech-366c0.appspot.com',
     iosBundleId: 'com.example.sealtech.RunnerTests',
   );
 }

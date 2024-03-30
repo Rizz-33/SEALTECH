@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sealtech/components/theme.dart';
 
 class UserTile extends StatelessWidget {
   final String text;
@@ -18,7 +19,7 @@ class UserTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: isNewMessage ? Colors.blue : Theme.of(context).colorScheme.secondary,
+          color: isNewMessage ? primary50 : secondaryColor,
           borderRadius: BorderRadius.circular(24),
         ),
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 25),
@@ -26,14 +27,13 @@ class UserTile extends StatelessWidget {
         child: Row(
           children: [
             // Icon
-            Icon(Icons.person),
+            Icon(Icons.person, color: primaryColor,),
             const SizedBox(width: 20),
             // Username
             Text(
               text,
               style: TextStyle(
                 fontWeight: isNewMessage ? FontWeight.bold : FontWeight.normal,
-                color: isNewMessage ? Colors.white : null,
               ),
             ),
           ],

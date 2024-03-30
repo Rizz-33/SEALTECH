@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/cart.dart' as fourthTab;
 import 'package:sealtech/client/category.dart' as secondTab;
-import 'package:sealtech/client/contact_us/pages/home.dart';
+import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/home.dart' as firstTab;
 import 'package:sealtech/client/profile/profile.dart' as fifthTab;
 import 'package:sealtech/client/search.dart' as thirdTab;
@@ -118,7 +118,7 @@ class HomeWidget extends State<NavbarC>{
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => ContactUsPage()),
               );
             },
             child: Icon(Icons.message, color: primary25),

@@ -14,8 +14,8 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
-              controller: controller,
-              focusNode: focusNode,
+        controller: controller,
+        focusNode: focusNode,
               cursorColor: accent75,
               decoration: InputDecoration(
                 hintText: 'Message SEALTECH...',

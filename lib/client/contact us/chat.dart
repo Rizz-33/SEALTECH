@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/contact_us/components/chat_bubble.dart';
-import 'package:sealtech/client/contact_us/components/textfield.dart';
-import 'package:sealtech/client/contact_us/services/chat/chat_service.dart';
+import 'package:sealtech/client/contact%20us/components/message_bubble.dart';
+import 'package:sealtech/client/contact%20us/components/textfield.dart';
+import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
+import 'package:sealtech/services/chat/chat_service.dart';
+
 
 class ChatPage extends StatefulWidget {
   final String receiverEmail;
@@ -86,11 +88,11 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
         title: Text(widget.receiverEmail),
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.grey,
+        foregroundColor: accent75,
         elevation: 0,
       ),
       body: Column(
@@ -169,7 +171,7 @@ class _ChatPageState extends State<ChatPage> {
           //send button
           Container(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 0, 47, 167),
+              color: accentColor,
               shape: BoxShape.circle,
             ),
             margin: EdgeInsets.only(right: 16),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/client/chemicals.dart';
-import 'package:sealtech/client/contact_us/pages/home.dart';
+import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/product.dart';
 import 'package:sealtech/client/services.dart';
 import 'package:sealtech/client/tools.dart';
@@ -81,7 +81,7 @@ class Category extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => HomePage()),
+                                              builder: (context) => ContactUsPage()),
                                         );
                                       },
                                       width: 150,
