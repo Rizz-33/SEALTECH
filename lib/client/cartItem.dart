@@ -41,7 +41,7 @@ class _CartItemState extends State<CartItem> {
   }
 
   void removeProduct() {
-    // TODO: Implement product removal logic
+    
   }
 
   @override
