@@ -20,9 +20,10 @@ class SignUpPage extends StatelessWidget {
     final _auth = AuthService();
 
     try {
-      _auth.signInWithEmailAndPassword(
+      _auth.signUpWithEmailAndPassword(
         _emailController.text,
         _passwordController.text,
+        _nameController.text,
       );
     } catch (e) {
       showDialog(

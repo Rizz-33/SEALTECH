@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
@@ -13,10 +15,31 @@ class _EditProfileState extends State<EditProfile> {
   String _email = '';
   String _password = '';
 
-  void _submit() {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // TODO: Implement the logic to update the user's profile
+      
+      User? user = _auth.currentUser;
+      
+      try {
+        // Update user profile data in Firestore
+        await FirebaseFirestore.instance.collection('users').doc(user!.uid).update({
+          'name': _name,
+          'email': _email,
+        });
+
+        // Update user email
+        await user.updateEmail(_email);
+
+        // Update user password
+        await user.updatePassword(_password);
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Profile updated successfully')));
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to update profile: $e')));
+      }
     }
   }
 
@@ -28,74 +51,76 @@ class _EditProfileState extends State<EditProfile> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                cursorColor: accent75,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  focusColor: accentColor,
-                  labelStyle: TextStyle(color: accentColor),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: accentColor),
+        child: SingleChildScrollView( // Wrap with SingleChildScrollView
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                TextFormField(
+                  cursorColor: accent75,
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    focusColor: accentColor,
+                    labelStyle: TextStyle(color: accentColor),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your name';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _name = value!;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _name = value!;
-                },
-              ),
-              TextFormField(
-                cursorColor: accent75,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  focusColor: accentColor,
-                  labelStyle: TextStyle(color: accentColor),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: accentColor),
+                TextFormField(
+                  cursorColor: accent75,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    focusColor: accentColor,
+                    labelStyle: TextStyle(color: accentColor),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _email = value!;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _email = value!;
-                },
-              ),
-              TextFormField(
-                cursorColor: accent75,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  focusColor: accentColor,
-                  labelStyle: TextStyle(color: accentColor),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: accentColor),
+                TextFormField(
+                  cursorColor: accent75,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    focusColor: accentColor,
+                    labelStyle: TextStyle(color: accentColor),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _password = value!;
+                  },
+                  obscureText: true,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _password = value!;
-                },
-                obscureText: true,
-              ),
-              SizedBox(height: 32,),
-              Button(buttonText: 'Submit', onPressed: (){}, color: 'orange', enableIcon: false,)
-            ],
+                SizedBox(height: 32,),
+                Button(buttonText: 'Submit', onPressed: _submit, color: 'orange', enableIcon: false,)
+              ],
+            ),
           ),
         ),
       ),

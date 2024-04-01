@@ -9,6 +9,7 @@ class SignInPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   final void Function()? onTap;
 
@@ -23,6 +24,7 @@ class SignInPage extends StatelessWidget {
       await authService.signInWithEmailPassword(
         _emailController.text,
         _passwordController.text,
+        _nameController.text,
       );
 
       // Extracting the password from user email

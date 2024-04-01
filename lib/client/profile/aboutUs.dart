@@ -309,18 +309,21 @@ class _AboutUsState extends State<AboutUs> {
               SizedBox(height: 30,),
               Image.asset('lib/images/aboutus3.jpg'),
               SizedBox(height: 50,),
-              Row(
-                children: [
-                  SizedBox(height: 50,),
-                  Text('Developed by undergraduate students\nfrom NSBM Green University.'),
-                  SizedBox(width: 70,),
-                  GestureDetector(
-                    onTap: () {
-                      launch('https://www.nsbm.ac.lk/');
-                    },
-                    child: Image.asset('lib/images/nsbmLogo.png', width: 60,),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    SizedBox(height: 50,),
+                    Text('Designed and developed by\nundergraduate students\nfrom University of Plymouth, The UK.', style: TextStyle(fontSize: 14),),
+                    Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        launch('https://www.plymouth.ac.lk/');
+                      },
+                      child: Image.asset('lib/images/image.png', width: 60,),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 20,),
             ],
