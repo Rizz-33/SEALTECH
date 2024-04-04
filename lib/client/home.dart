@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/client/chemicals.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
-import 'package:sealtech/client/product.dart';
 import 'package:sealtech/client/profile/feedback.dart';
+import 'package:sealtech/client/randomProductBuilder.dart';
 import 'package:sealtech/client/services.dart';
 import 'package:sealtech/client/tools.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
 class Home extends StatelessWidget {
+  
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 100,
@@ -94,19 +95,9 @@ class Home extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5,),
-              const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: 6),
-                child: Row(
-                  children: [
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Swimming Pool\n(8ft)', subtitle: 'Service', price: '2 million LKR +'),
-                  ],
-                ),
-              ),
+              // Add the MyRandomProductWidget here
+              RandomProductWidget(),
+              // More of your existing widgets...
               const SizedBox(height: 8,),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
@@ -220,19 +211,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: 6),
-                child: Row(
-                  children: [
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Waterproofing\nSolution', subtitle: 'Product', price: '1 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Waterproofing\nSolution', subtitle: 'Product', price: '1 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Waterproofing\nSolution', subtitle: 'Product', price: '1 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Waterproofing\nSolution', subtitle: 'Product', price: '1 million LKR +'),
-                    ProductPage(imagePath: 'lib/images/pro1.png', title: 'Waterproofing\nSolution', subtitle: 'Product', price: '1 million LKR +'),
-                  ],
-                ),
-              ),
+              RandomProductWidget(),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
