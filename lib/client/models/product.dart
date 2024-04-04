@@ -37,6 +37,38 @@ class SealTech extends ChangeNotifier{
         category: ProductCategory.Services,
         description: 'Service',
         price: 1),
+
+    //tools
+    Product(
+        imagePath: 'lib/images/Drill Machine.jpeg',
+        name: 'Drill Machine',
+        category: ProductCategory.Tools,
+        description: 'Tool',
+        price: 9500),
+    Product(
+        imagePath: 'lib/images/Screwdriver Set.jpg',
+        name: 'Screwdriver Set',
+        category: ProductCategory.Tools,
+        description: 'Tool',
+        price: 12500),
+    Product(
+        imagePath: 'lib/images/Circular Saw.jpeg',
+        name: 'Circular Saw',
+        category: ProductCategory.Tools,
+        description: 'Tool',
+        price: 5000),
+    Product(
+        imagePath: 'lib/images/Adjustable Wrench.jpg',
+        name: 'Adjustable Wrench',
+        category: ProductCategory.Tools,
+        description: 'Tool',
+        price: 7500),
+    Product(
+        imagePath: 'lib/images/Pipe Wrench.jpeg',
+        name: 'Pipe Wrench',
+        category: ProductCategory.Tools,
+        description: 'Tool',
+        price: 3500),
   ];
   
   //cart
