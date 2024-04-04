@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
-
+import 'package:sealtech/client/product.dart'; // Import the ProductPage widget
 
 class Category extends StatelessWidget {
   final SealTech sealTech = SealTech(); // Initialize your SealTech class
@@ -76,15 +76,11 @@ class Category extends StatelessWidget {
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          item.imagePath,
-                          height: 120,
-                          width: 120,
-                        ),
-                        Text(item.name),
-                      ],
+                    child: ProductPage( // Use ProductPage widget here
+                      imagePath: item.imagePath,
+                      title: item.name,
+                      subtitle: categoryTitle, // Pass the category title
+                      price: '${item.price.toString()} million LKR +', // Format the price
                     ),
                   ),
                 ),
