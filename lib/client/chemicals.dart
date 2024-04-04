@@ -31,7 +31,7 @@ class Chemical extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _buildChemicalCardPairs(context),
@@ -70,6 +70,7 @@ class Chemical extends StatelessWidget {
                   price: chemicalProducts[i].price.toString() + "  LKR",
                 ),
               ),
+              SizedBox(width: 20),
               Expanded(
                 child: ProductPage(
                   imagePath: chemicalProducts[i + 1].imagePath,

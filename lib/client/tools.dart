@@ -28,7 +28,7 @@ class Tool extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _buildToolCardPairs(context),
@@ -66,6 +66,7 @@ class Tool extends StatelessWidget {
                   price: toolProducts[i].price.toString() + "  LKR",
                 ),
               ),
+              SizedBox(width: 20),
               Expanded(
                 child: ProductPage(
                   imagePath: toolProducts[i + 1].imagePath,
