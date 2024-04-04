@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:sealtech/client/models/product.dart';
+import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
@@ -23,7 +22,7 @@ class ToolsChemCard extends StatelessWidget {
       ),
       body: GestureDetector(
         onTap: () {
-          _addToCart(context);
+          _navigate(context);
         },
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -31,17 +30,17 @@ class ToolsChemCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                    product.imagePath,
-                    height: 200,
-                  ),
+                product.imagePath,
+                height: 200,
+              ),
               SizedBox(height: 30,),
               Text(
                 product.name,
                 style: TextStyle(
-                        color: primaryColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  color: primaryColor,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               SizedBox(height: 6,),
               Text(
@@ -70,9 +69,9 @@ class ToolsChemCard extends StatelessWidget {
 
               SizedBox(height: 10),
               Button(
-                buttonText: 'Add to Cart',
+                buttonText: _getButtonText(product.category),
                 onPressed: () {
-                  _addToCart(context);
+                  _navigate(context);
                 },
                 width: 380,
                 isStroked: false,
@@ -85,15 +84,15 @@ class ToolsChemCard extends StatelessWidget {
     );
   }
 
-  void _addToCart(BuildContext context) {
-    final sealTech = Provider.of<SealTech>(context, listen: false);
-    sealTech.addToCart(product);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${product.name} added to cart'),
-        duration: Duration(seconds: 2),
-      ),
-    );
+  void _navigate(BuildContext context) {
+    if (product.category == ProductCategory.Services) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ContactUsPage()),
+      );
+    } else {
+      // Perform another navigation
+    }
   }
 
   String _formatPrice(double price) {
@@ -111,5 +110,9 @@ class ToolsChemCard extends StatelessWidget {
       default:
         return 'Unknown';
     }
+  }
+
+  String _getButtonText(ProductCategory category) {
+    return category == ProductCategory.Services ? 'Contact Us' : 'Add To Cart';
   }
 }
