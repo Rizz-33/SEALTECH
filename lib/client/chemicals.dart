@@ -67,7 +67,7 @@ class Chemical extends StatelessWidget {
                   imagePath: chemicalProducts[i].imagePath,
                   title: chemicalProducts[i].name,
                   subtitle: 'Chemicals',
-                  price: chemicalProducts[i].price.toString(),
+                  price: chemicalProducts[i].price.toString() + "  LKR",
                 ),
               ),
               Expanded(
@@ -75,7 +75,7 @@ class Chemical extends StatelessWidget {
                   imagePath: chemicalProducts[i + 1].imagePath,
                   title: chemicalProducts[i + 1].name,
                   subtitle: 'Chemicals',
-                  price: chemicalProducts[i + 1].price.toString(),
+                  price: chemicalProducts[i + 1].price.toString() + "  LKR",
                 ),
               ),
             ],
@@ -88,7 +88,7 @@ class Chemical extends StatelessWidget {
             imagePath: chemicalProducts[i].imagePath,
             title: chemicalProducts[i].name,
             subtitle: 'Chemicals',
-            price: chemicalProducts[i].price.toString(),
+            price: chemicalProducts[i].price.toString() + "  LKR",
           ),
         );
       }
