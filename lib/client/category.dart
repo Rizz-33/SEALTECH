@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/cardToolChemicals.dart';
+import 'package:sealtech/client/chemicals.dart';
+import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
-import 'package:sealtech/client/product.dart'; // Import the ProductPage widget
+import 'package:sealtech/client/product.dart';
+import 'package:sealtech/client/services.dart';
+import 'package:sealtech/client/tools.dart';
+import 'package:sealtech/components/button.dart'; // Import the ProductPage widget
 
 class Category extends StatelessWidget {
   final SealTech sealTech = SealTech(); // Initialize your SealTech class
@@ -26,6 +31,151 @@ class Category extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 16,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Service()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Stack(
+                            children: [
+                              Image.asset(
+                                'lib/images/catServiceImage.png',
+                                height: 287,
+                                width: 180,
+                              ),
+                              Positioned(
+                                bottom: 16,
+                                left: 16,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      'Services',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const Text(
+                                      'Contact SEALTECH\nfor unbeatable\nwaterproofing solutions',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 11,
+                                      ),
+                                    ),
+                                    Button(
+                                      buttonText: 'Contact Us',
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ContactUsPage()),
+                                        );
+                                      },
+                                      width: 150,
+                                      isStroked: true,
+                                      color: 'white',
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Tool()),
+                              );
+                            },
+                            child: Container(
+                              height: 130,
+                              width: 180,
+                              child: Stack(
+                                children: [
+                                  Image.asset(
+                                    'lib/images/catToolsImage.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const Positioned(
+                                    bottom: 16,
+                                    left: 16,
+                                    child: Text(
+                                      'Tools',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Chemical()),
+                              );
+                            },
+                            child: Stack(
+                              children: [
+                                Image.asset(
+                                  'lib/images/catChemicalsImage.png',
+                                  height: 130,
+                                  width: 180,
+                                ),
+                                const Positioned(
+                                  bottom: 16,
+                                  left: 16,
+                                  child: Text(
+                                    'Chemicals',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
             SizedBox(height: 16),
             buildCategorySection(
               context,
@@ -77,11 +227,11 @@ class Category extends StatelessWidget {
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ProductPage( // Use ProductPage widget here
+                    child: ProductPage(
                       imagePath: item.imagePath,
                       title: item.name,
-                      subtitle: categoryTitle, // Pass the category title
-                      price: '${item.price.toString()} million LKR +', // Format the price
+                      subtitle: categoryTitle,
+                      price: categoryTitle == "Services" ? '${(item.price).toStringAsFixed(2)} million LKR +' : '${item.price.toStringAsFixed(2)} LKR',
                     ),
                   ),
                 ),
