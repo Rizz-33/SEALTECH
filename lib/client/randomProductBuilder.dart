@@ -47,16 +47,33 @@ class RandomProductWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ToolsChemCard(product: product,)
+            builder: (context) => ToolsChemCard(product: product),
           ),
         );
       },
       child: ProductPage(
         imagePath: product.imagePath,
         title: product.name,
-        subtitle: product.description,
-        price: '${product.price} LKR',
+        subtitle: _getCategoryString(product.category),
+        price: '${_formatPrice(product.price)} LKR',
       ),
     );
+  }
+
+  String _getCategoryString(ProductCategory category) {
+    switch (category) {
+      case ProductCategory.Services:
+        return 'Services';
+      case ProductCategory.Tools:
+        return 'Tools';
+      case ProductCategory.Chemicals:
+        return 'Chemicals';
+      default:
+        return 'Unknown';
+    }
+  }
+
+  String _formatPrice(double price) {
+    return price.toStringAsFixed(2);
   }
 }

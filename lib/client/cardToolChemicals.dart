@@ -25,13 +25,14 @@ class ToolsChemCard extends StatelessWidget {
           _navigate(context);
         },
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 20,),
               Image.asset(
                 product.imagePath,
-                height: 200,
+                height: 250,
               ),
               SizedBox(height: 30,),
               Text(
@@ -48,8 +49,12 @@ class ToolsChemCard extends StatelessWidget {
                 style: TextStyle(color: accentColor),
               ),
               SizedBox(height: 16),
-              Text(
-                product.description,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  product.description,
+                  textAlign: TextAlign.center,
+                ),
               ),
               SizedBox(height: 16),
               RichText(
