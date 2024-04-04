@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sealtech/client/cardToolChemicals.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/client/product.dart';
@@ -59,20 +60,30 @@ class Tool extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ProductPage(
-                  imagePath: toolProducts[i].imagePath,
-                  title: toolProducts[i].name,
-                  subtitle: 'Tools',
-                  price: toolProducts[i].price.toString() + "  LKR",
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: toolProducts[i])));
+                  },
+                  child: ProductPage(
+                    imagePath: toolProducts[i].imagePath,
+                    title: toolProducts[i].name,
+                    subtitle: 'Tools',
+                    price: toolProducts[i].price.toStringAsFixed(2) + "  LKR",
+                  ),
                 ),
               ),
               SizedBox(width: 20),
               Expanded(
-                child: ProductPage(
-                  imagePath: toolProducts[i + 1].imagePath,
-                  title: toolProducts[i + 1].name,
-                  subtitle: 'Tools',
-                  price: toolProducts[i + 1].price.toString() + "  LKR",
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: toolProducts[i + 1])));
+                  },
+                  child: ProductPage(
+                    imagePath: toolProducts[i + 1].imagePath,
+                    title: toolProducts[i + 1].name,
+                    subtitle: 'Tools',
+                    price: toolProducts[i + 1].price.toStringAsFixed(2) + "  LKR",
+                  ),
                 ),
               ),
             ],
@@ -81,11 +92,16 @@ class Tool extends StatelessWidget {
       } else {
         // Create a row with only one tool card
         pairs.add(
-          ProductPage(
-            imagePath: toolProducts[i].imagePath,
-            title: toolProducts[i].name,
-            subtitle: 'Tools',
-            price: toolProducts[i].price.toString() + "  LKR",
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: toolProducts[i])));
+            },
+            child: ProductPage(
+              imagePath: toolProducts[i].imagePath,
+              title: toolProducts[i].name,
+              subtitle: 'Tools',
+              price: toolProducts[i].price.toStringAsFixed(2) + "  LKR",
+            ),
           ),
         );
       }

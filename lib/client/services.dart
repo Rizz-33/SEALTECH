@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sealtech/client/cardToolChemicals.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/client/product.dart';
@@ -59,20 +60,30 @@ class Service extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ProductPage(
-                  imagePath: serviceProducts[i].imagePath,
-                  title: serviceProducts[i].name,
-                  subtitle: 'Services',
-                  price: serviceProducts[i].price.toString() + '  million LKR +',
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: serviceProducts[i])));
+                  },
+                  child: ProductPage(
+                    imagePath: serviceProducts[i].imagePath,
+                    title: serviceProducts[i].name,
+                    subtitle: 'Services',
+                    price: serviceProducts[i].price.toStringAsFixed(2) + '  million LKR +',
+                  ),
                 ),
               ),
               SizedBox(width: 20), // Add spacing between cards
               Expanded(
-                child: ProductPage(
-                  imagePath: serviceProducts[i + 1].imagePath,
-                  title: serviceProducts[i + 1].name,
-                  subtitle: 'Services',
-                  price: serviceProducts[i + 1].price.toString() + '  million LKR +',
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: serviceProducts[i + 1])));
+                  },
+                  child: ProductPage(
+                    imagePath: serviceProducts[i + 1].imagePath,
+                    title: serviceProducts[i + 1].name,
+                    subtitle: 'Services',
+                    price: serviceProducts[i + 1].price.toStringAsFixed(2) + '  million LKR +',
+                  ),
                 ),
               ),
             ],
@@ -81,11 +92,16 @@ class Service extends StatelessWidget {
       } else {
         // Create a row with only one service card
         pairs.add(
-          ProductPage(
-            imagePath: serviceProducts[i].imagePath,
-            title: serviceProducts[i].name,
-            subtitle: 'Services',
-            price: serviceProducts[i].price.toString() + '  million LKR +',
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: serviceProducts[i])));
+            },
+            child: ProductPage(
+              imagePath: serviceProducts[i].imagePath,
+              title: serviceProducts[i].name,
+              subtitle: 'Services',
+              price: serviceProducts[i].price.toStringAsFixed(2) + '  million LKR +',
+            ),
           ),
         );
       }

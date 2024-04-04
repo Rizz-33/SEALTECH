@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sealtech/client/cardToolChemicals.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/client/product.dart';
@@ -63,20 +64,30 @@ class Chemical extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ProductPage(
-                  imagePath: chemicalProducts[i].imagePath,
-                  title: chemicalProducts[i].name,
-                  subtitle: 'Chemicals',
-                  price: chemicalProducts[i].price.toString() + "  LKR",
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: chemicalProducts[i])));
+                  },
+                  child: ProductPage(
+                    imagePath: chemicalProducts[i].imagePath,
+                    title: chemicalProducts[i].name,
+                    subtitle: 'Chemicals',
+                    price: chemicalProducts[i].price.toStringAsFixed(2) + "  LKR",
+                  ),
                 ),
               ),
               SizedBox(width: 20),
               Expanded(
-                child: ProductPage(
-                  imagePath: chemicalProducts[i + 1].imagePath,
-                  title: chemicalProducts[i + 1].name,
-                  subtitle: 'Chemicals',
-                  price: chemicalProducts[i + 1].price.toString() + "  LKR",
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: chemicalProducts[i + 1])));
+                  },
+                  child: ProductPage(
+                    imagePath: chemicalProducts[i + 1].imagePath,
+                    title: chemicalProducts[i + 1].name,
+                    subtitle: 'Chemicals',
+                    price: chemicalProducts[i + 1].price.toStringAsFixed(2) + "  LKR",
+                  ),
                 ),
               ),
             ],
@@ -85,11 +96,16 @@ class Chemical extends StatelessWidget {
       } else {
         // Create a row with only one chemical card
         pairs.add(
-          ProductPage(
-            imagePath: chemicalProducts[i].imagePath,
-            title: chemicalProducts[i].name,
-            subtitle: 'Chemicals',
-            price: chemicalProducts[i].price.toString() + "  LKR",
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: chemicalProducts[i])));
+            },
+            child: ProductPage(
+              imagePath: chemicalProducts[i].imagePath,
+              title: chemicalProducts[i].name,
+              subtitle: 'Chemicals',
+              price: chemicalProducts[i].price.toStringAsFixed(2) + "  LKR",
+            ),
           ),
         );
       }

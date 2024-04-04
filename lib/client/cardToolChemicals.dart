@@ -60,7 +60,7 @@ class ToolsChemCard extends StatelessWidget {
                       style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                     TextSpan(
-                      text: '${_formatPrice(product.price)}',
+                      text: '${_formatPrice(product.price, product.category)}',
                       style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -95,8 +95,12 @@ class ToolsChemCard extends StatelessWidget {
     }
   }
 
-  String _formatPrice(double price) {
-    return "${price.toStringAsFixed(2)} LKR";
+  String _formatPrice(double price, ProductCategory category) {
+    if (category == ProductCategory.Services) {
+      return "${(price / 1000000).toStringAsFixed(2)} million LKR +";
+    } else {
+      return "${price.toStringAsFixed(2)} LKR";
+    }
   }
 
   String _getCategoryString(ProductCategory category) {
