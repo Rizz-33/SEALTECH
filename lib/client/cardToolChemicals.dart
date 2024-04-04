@@ -97,7 +97,7 @@ class ToolsChemCard extends StatelessWidget {
 
   String _formatPrice(double price, ProductCategory category) {
     if (category == ProductCategory.Services) {
-      return "${(price / 1000000).toStringAsFixed(2)} million LKR +";
+      return "${(price).toStringAsFixed(2)} million LKR +";
     } else {
       return "${price.toStringAsFixed(2)} LKR";
     }
