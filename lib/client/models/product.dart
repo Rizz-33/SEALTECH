@@ -7,7 +7,36 @@ import 'package:sealtech/client/models/productCategories.dart';
 
 class SealTech extends ChangeNotifier{
   final List<Product> _menu = [
-
+    Product(
+        imagePath: 'lib/images/Pool Waterproofing.jpeg',
+        name: 'Pool Waterproofing',
+        description: 'Service',
+        category: ProductCategory.Services,
+        price: 3),
+    Product(
+        imagePath: 'lib/images/Roof Waterproofing.jpeg',
+        name: 'Roof Waterproofing',
+        category: ProductCategory.Services,
+        description: 'Service',
+        price: 1),
+    Product(
+        imagePath: 'lib/images/Basement Sealing.jpeg',
+        name: 'Basement Sealing',
+        category: ProductCategory.Services,
+        description: 'Service',
+        price: 1.5),
+    Product(
+        imagePath: 'lib/images/Side walls Sealing.jpeg',
+        name: 'Side walls Sealing',
+        category: ProductCategory.Services,
+        description: 'Service',
+        price: 2),
+    Product(
+        imagePath: 'lib/images/Concrete Sealing.jpeg',
+        name: 'Concrete Sealing',
+        category: ProductCategory.Services,
+        description: 'Service',
+        price: 1),
   ];
   
   //cart
