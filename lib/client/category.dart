@@ -81,7 +81,8 @@ class Category extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => ContactUsPage()),
+                                              builder: (context) =>
+                                                  ContactUsPage()),
                                         );
                                       },
                                       width: 150,
@@ -235,27 +236,27 @@ class Category extends StatelessWidget {
                       ProductPage(
                           imagePath: 'lib/images/Drill Machine.jpeg',
                           title: 'Drill Machine',
-                          subtitle: 'Service',
+                          subtitle: 'Tool',
                           price: '9 500 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Screwdriver Set.jpg',
                           title: 'Screwdriver Set',
-                          subtitle: 'Service',
+                          subtitle: 'Tool',
                           price: '12 500 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Circular Saw.jpeg',
                           title: 'Circular Saw',
-                          subtitle: 'Service',
+                          subtitle: 'Tool',
                           price: '5 000 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Adjustable Wrench.jpg',
                           title: 'Adjustable Wrench',
-                          subtitle: 'Service',
+                          subtitle: 'Tool',
                           price: '7 500 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Pipe Wrench.jpeg',
                           title: 'Pipe Wrench',
-                          subtitle: 'Service',
+                          subtitle: 'Tool',
                           price: '3 500 LKR'),
                     ],
                   ),
@@ -280,27 +281,27 @@ class Category extends StatelessWidget {
                       ProductPage(
                           imagePath: 'lib/images/Wood Protector.jpeg',
                           title: 'Wood Protector',
-                          subtitle: 'Service',
+                          subtitle: 'Chemical',
                           price: '9 500 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Waterproof Sealant.png',
                           title: 'Waterproof Sealant',
-                          subtitle: 'Service',
+                          subtitle: 'Chemical',
                           price: '12 500 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Surface Cleaner.jpeg',
                           title: 'Surface Cleaner',
-                          subtitle: 'Service',
+                          subtitle: 'Chemical',
                           price: '5 000 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Mold Inhibitor Spray.jpeg',
                           title: 'Mold Inhibitor Spray',
-                          subtitle: 'Service',
+                          subtitle: 'Chemical',
                           price: '7 500 LKR'),
                       ProductPage(
                           imagePath: 'lib/images/Wood Protector.jpeg',
                           title: 'Wood Protector',
-                          subtitle: 'Service',
+                          subtitle: 'Chemical',
                           price: '9 500 LKR'),
                     ],
                   ),
