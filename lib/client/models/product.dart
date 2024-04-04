@@ -13,7 +13,7 @@ class SealTech extends ChangeNotifier{
   //cart
   final List<CartItem> _cart = [];
 
-  String _deliveryAddress = "389, Kahathuduwa, Gonapola Junction";
+  String _deliveryAddress = "239, Colombo";
 
   List<Product> get menu => _menu;
   List<CartItem> get cart => _cart;
