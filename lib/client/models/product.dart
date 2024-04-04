@@ -6,7 +6,7 @@ import 'package:sealtech/client/models/cartItem.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 
 class SealTech extends ChangeNotifier{
-  final List<Product> _menu = [
+  final List<Product> _allproducts = [
     Product(
         imagePath: 'lib/images/Pool Waterproofing.jpeg',
         name: 'Pool Waterproofing',
@@ -108,7 +108,7 @@ class SealTech extends ChangeNotifier{
 
   String _deliveryAddress = "239, Colombo";
 
-  List<Product> get menu => _menu;
+  List<Product> get allproducts => _allproducts;
   List<CartItem> get cart => _cart;
   String get deliveryAddress => _deliveryAddress;
 
