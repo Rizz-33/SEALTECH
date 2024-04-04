@@ -69,6 +69,38 @@ class SealTech extends ChangeNotifier{
         category: ProductCategory.Tools,
         description: 'Tool',
         price: 3500),
+
+    //chemicals
+    Product(
+        imagePath: 'lib/images/Wood Protector.jpeg',
+        name: 'Wood Protector',
+        category: ProductCategory.Chemicals,
+        description: 'Chemical',
+        price: 9500),
+    Product(
+        imagePath: 'lib/images/Waterproof Sealant.png',
+        name: 'Waterproof Sealant',
+        category: ProductCategory.Chemicals,
+        description: 'Chemical',
+        price: 12500),
+    Product(
+        imagePath: 'lib/images/Surface Cleaner.jpeg',
+        name: 'Surface Cleaner',
+        category: ProductCategory.Chemicals,
+        description: 'Chemical',
+        price: 5000),
+    Product(
+        imagePath: 'lib/images/Mold Inhibitor Spray.jpeg',
+        name: 'Mold Inhibitor Spray',
+        category: ProductCategory.Chemicals,
+        description: 'Chemical',
+        price: 7500),
+    Product(
+        imagePath: 'lib/images/Wood Protector.jpeg',
+        name: 'Wood Protector',
+        category: ProductCategory.Chemicals,
+        description: 'Chemical',
+        price: 9500),
   ];
   
   //cart
