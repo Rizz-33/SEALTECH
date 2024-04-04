@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sealtech/client/cardToolChemicals.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/client/product.dart'; // Import the ProductPage widget
@@ -72,7 +73,7 @@ class Category extends StatelessWidget {
               for (final item in categoryItems)
                 GestureDetector(
                   onTap: () {
-                    // Handle item tap
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ToolsChemCard(product: item,)));
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
