@@ -96,11 +96,11 @@ class SealTech extends ChangeNotifier{
         description: 'Combat mold and mildew growth with our powerful inhibitor spray, preventing health hazards and property damage associated with fungal infestations, ensuring a safe and healthy indoor environment for you and your family.',
         price: 7500),
     Product(
-        imagePath: 'lib/images/Wood Protector.jpeg',
-        name: 'Wood Protector',
+        imagePath: 'lib/images/Rust Remover.png',
+        name: 'Rust Remover',
         category: ProductCategory.Chemicals,
-        description: 'Extend the lifespan of your outdoor wood furniture and structures with our specialized protector, offering superior weather resistance and durability for year-round protection against the elements, ensuring lasting beauty and functionality for your outdoor spaces.',
-        price: 9500),
+        description: 'Effectively eliminate rust and corrosion from metal surfaces with our advanced rust remover, restoring the appearance and integrity of your equipment, tools, and fixtures, ensuring prolonged lifespan and optimal performance for your belongings.',
+        price: 8500),
   ];
   
   //cart
