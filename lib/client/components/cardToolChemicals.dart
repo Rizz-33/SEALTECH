@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
+import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
-class ToolsChemCard extends StatelessWidget {
+class ToolsChemCard extends StatefulWidget {
   final Product product;
 
   const ToolsChemCard({Key? key, required this.product}) : super(key: key);
+
+  @override
+  State<ToolsChemCard> createState() => _ToolsChemCardState();
+}
+
+class _ToolsChemCardState extends State<ToolsChemCard> {
+
+  void addToCart(Product product){
+    //close the current product page to go back to menu
+    Navigator.pop(context);
+
+    //add to cart
+    context.read<SealTech>().addToCart(product);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +47,12 @@ class ToolsChemCard extends StatelessWidget {
             children: [
               SizedBox(height: 20,),
               Image.asset(
-                product.imagePath,
+                widget.product.imagePath,
                 height: 250,
               ),
               SizedBox(height: 30,),
               Text(
-                product.name,
+                widget.product.name,
                 style: TextStyle(
                   color: primaryColor,
                   fontSize: 24,
@@ -45,14 +61,14 @@ class ToolsChemCard extends StatelessWidget {
               ),
               SizedBox(height: 6,),
               Text(
-                '${_getCategoryString(product.category)}',
+                '${_getCategoryString(widget.product.category)}',
                 style: TextStyle(color: accentColor),
               ),
               SizedBox(height: 16),
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  product.description,
+                  widget.product.description,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -65,7 +81,7 @@ class ToolsChemCard extends StatelessWidget {
                       style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                     TextSpan(
-                      text: '${_formatPrice(product.price, product.category)}',
+                      text: '${_formatPrice(widget.product.price, widget.product.category)}',
                       style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -74,7 +90,7 @@ class ToolsChemCard extends StatelessWidget {
 
               SizedBox(height: 10),
               Button(
-                buttonText: _getButtonText(product.category),
+                buttonText: _getButtonText(widget.product.category),
                 onPressed: () {
                   _navigate(context);
                 },
@@ -90,13 +106,13 @@ class ToolsChemCard extends StatelessWidget {
   }
 
   void _navigate(BuildContext context) {
-    if (product.category == ProductCategory.Services) {
+    if (widget.product.category == ProductCategory.Services) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => ContactUsPage()),
       );
     } else {
-      // Perform another navigation
+      onTap: () => addToCart(widget.product, );
     }
   }
 
