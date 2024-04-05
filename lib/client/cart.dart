@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sealtech/client/cartItem.dart';
+import 'package:sealtech/client/components/cartItem.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';

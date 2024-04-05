@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/cardToolChemicals.dart';
+import 'package:sealtech/client/components/cardToolChemicals.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
-import 'package:sealtech/client/product.dart';
+import 'package:sealtech/client/components/product.dart';
 
 class RandomProductWidget extends StatelessWidget {
   @override

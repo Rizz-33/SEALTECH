@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/cardToolChemicals.dart';
-import 'package:sealtech/client/chemicals.dart';
+import 'package:sealtech/client/category/chemicals.dart';
+import 'package:sealtech/client/category/services.dart';
+import 'package:sealtech/client/category/tools.dart';
+import 'package:sealtech/client/components/cardToolChemicals.dart';
+import 'package:sealtech/client/components/product.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
-import 'package:sealtech/client/product.dart';
-import 'package:sealtech/client/services.dart';
-import 'package:sealtech/client/tools.dart';
 import 'package:sealtech/components/button.dart'; // Import the ProductPage widget
 
 class Category extends StatelessWidget {

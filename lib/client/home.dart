@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sealtech/client/chemicals.dart';
+import 'package:sealtech/client/category/chemicals.dart';
+import 'package:sealtech/client/category/services.dart';
+import 'package:sealtech/client/category/tools.dart';
+import 'package:sealtech/client/components/randomProductBuilder.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/profile/feedback.dart';
-import 'package:sealtech/client/randomProductBuilder.dart';
-import 'package:sealtech/client/services.dart';
-import 'package:sealtech/client/tools.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 

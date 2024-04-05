@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/components/theme.dart';
-import 'package:sealtech/client/product.dart';
+import 'package:sealtech/client/components/product.dart';
 
 class Search extends StatefulWidget {
   @override
