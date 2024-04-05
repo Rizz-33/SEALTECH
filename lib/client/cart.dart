@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sealtech/client/cartItem.dart';
+import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
@@ -21,6 +23,10 @@ class CartState extends State<Cart> { // Made the class public
 
   @override
   Widget build(BuildContext context) {
+    return Consumer<SealTech> (builder: (context, sealtech, child) {
+      //cart
+      final userCart = sealtech.cart;
+      
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
@@ -28,11 +34,38 @@ class CartState extends State<Cart> { // Made the class public
           child: Text('Cart'),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Image.asset('lib/images/logoIconBlack.png'),
-          ),
-        ],
+          //clear cart button
+            IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text(
+                      "Are you sure you want to clear the cart?",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    actions: [
+                      //cancel
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text('Cancel', style: TextStyle(color: accentColor),),
+                      ),
+
+                      //yes
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          sealtech.clearCart();
+                        },
+                        child: Text('Yes', style: TextStyle(color: accentColor),),
+                      ),
+                    ],
+                  )
+                );
+              },
+              icon: Icon(Icons.delete),
+            ),
+          ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -179,5 +212,5 @@ class CartState extends State<Cart> { // Made the class public
         ),
       ),
     );
-  }
-}
+  });
+}}
