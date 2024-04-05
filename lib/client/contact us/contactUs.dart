@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sealtech/client/components/userTile.dart';
 import 'package:sealtech/client/contact%20us/chat.dart';
-import 'package:sealtech/client/contact%20us/components/userTile.dart';
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
 import 'package:sealtech/services/chat/chat_service.dart';
