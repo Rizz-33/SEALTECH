@@ -32,7 +32,9 @@ class FeedbackTemplate extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: stars.map((star) => Icon(star, color: primaryColor)).toList(),
+                  children: stars
+                      .map((star) => Icon(star, color: primaryColor))
+                      .toList(),
                 ),
               ),
             ),
@@ -41,7 +43,11 @@ class FeedbackTemplate extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(left: 16, bottom: 44),
-                  child: Icon(Icons.person, size: 48, color: primary75,),
+                  child: Icon(
+                    Icons.person,
+                    size: 48,
+                    color: primary75,
+                  ),
                 ),
                 SizedBox(width: 24),
                 Column(
@@ -60,7 +66,10 @@ class FeedbackTemplate extends StatelessWidget {
             Positioned(
               bottom: 16,
               left: 16,
-              child: Text(comment, style: TextStyle(fontSize: 13),),
+              child: Text(
+                comment,
+                style: TextStyle(fontSize: 13),
+              ),
             ),
           ],
         ),
