@@ -37,7 +37,7 @@ class ProductPage extends StatelessWidget {
             title,
             style: const TextStyle(
               fontSize: 13,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w900,
             ),
           ),
           Text(

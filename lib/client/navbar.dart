@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/cart.dart' as fourthTab;
-import 'package:sealtech/client/category.dart' as secondTab;
+import 'package:sealtech/client/category/category.dart' as secondTab;
 import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/home.dart' as firstTab;
 import 'package:sealtech/client/profile/profile.dart' as fifthTab;

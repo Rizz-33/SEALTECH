@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sealtech/client/contact%20us/components/message.dart';
+import 'package:sealtech/client/components/message.dart';
 
 class ChatService {
 
