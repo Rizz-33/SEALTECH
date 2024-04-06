@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sealtech/Employee/Addnewlocation.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/profile/aboutUs.dart';
 import 'package:sealtech/client/profile/addFeedback.dart';
@@ -84,7 +85,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -112,7 +114,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -140,7 +143,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -168,7 +172,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -196,7 +201,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -224,7 +230,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -252,7 +259,8 @@ class Profile extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
                     side: const BorderSide(color: Colors.black, width: 0.4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -270,25 +278,42 @@ class Profile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 36.0),
-              Button(buttonText: 'Logout', onPressed: logout, color: 'orange', width: 380,),
-              SizedBox(height: 50,),
+              Button(
+                buttonText: 'Logout',
+                onPressed: logout,
+                color: 'orange',
+                width: 380,
+              ),
+              SizedBox(
+                height: 50,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    SizedBox(height: 50,),
-                    Text('Designed and developed by\nundergraduate students\nfrom University of Plymouth, The UK.', style: TextStyle(fontSize: 14),),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      'Designed and developed by\nundergraduate students\nfrom University of Plymouth, The UK.',
+                      style: TextStyle(fontSize: 14),
+                    ),
                     Spacer(),
                     GestureDetector(
                       onTap: () {
                         launch('https://www.plymouth.ac.lk/');
                       },
-                      child: Image.asset('lib/images/image.png', width: 60,),
+                      child: Image.asset(
+                        'lib/images/image.png',
+                        width: 60,
+                      ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

@@ -19,7 +19,7 @@ class FeedbackTemplate extends StatelessWidget {
     return Center(
       child: Container(
         width: 380,
-        height: 120,
+        height: 150,
         decoration: BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.circular(10),
@@ -32,7 +32,9 @@ class FeedbackTemplate extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: stars.map((star) => Icon(star, color: primaryColor)).toList(),
+                  children: stars
+                      .map((star) => Icon(star, color: primaryColor))
+                      .toList(),
                 ),
               ),
             ),
@@ -40,8 +42,12 @@ class FeedbackTemplate extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 16, bottom: 44),
-                  child: Icon(Icons.person, size: 48, color: primary75,),
+                  padding: EdgeInsets.only(left: 16, bottom: 80),
+                  child: Icon(
+                    Icons.person,
+                    size: 48,
+                    color: primary75,
+                  ),
                 ),
                 SizedBox(width: 24),
                 Column(
@@ -49,18 +55,28 @@ class FeedbackTemplate extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 16),
-                      child: Text(title, style: TextStyle(fontSize: 16)),
+                      child: Text(title,
+                          style: TextStyle(fontSize: 16, color: Colors.black)),
                     ),
                     SizedBox(height: 4),
-                    Text(additionalText, style: TextStyle(fontSize: 12)),
+                    Text(additionalText,
+                        style: TextStyle(fontSize: 12, color: Colors.black)),
                   ],
                 ),
               ],
             ),
             Positioned(
-              bottom: 16,
+              bottom: 10,
               left: 16,
-              child: Text(comment, style: TextStyle(fontSize: 13),),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width - 32,
+                child: Text(
+                  comment,
+                  style: TextStyle(fontSize: 13),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ),
           ],
         ),
