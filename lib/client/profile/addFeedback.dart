@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Add this import
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
@@ -11,13 +12,51 @@ class FeedbackForm extends StatefulWidget {
 class _FeedbackFormState extends State<FeedbackForm> {
   final _formKey = GlobalKey<FormState>();
   String _feedback = '';
+  String _comment = ''; // New variable for comment
   double _rating = 0;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      //back end logic
+
+      _sendFeedbackToFirestore();
     }
+  }
+
+  void _sendFeedbackToFirestore() {
+    _firestore.collection('feedback').add({
+      'feedback': _feedback,
+      'comment': _comment,
+      'rating': _rating,
+      'timestamp': Timestamp.now(),
+    }).then((value) {
+      _showAlertDialog('Success', 'Feedback submitted successfully');
+    }).catchError((error) {
+      _showAlertDialog('Error', 'Failed to submit feedback: $error');
+    });
+  }
+
+  void _showAlertDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -61,9 +100,38 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   onSaved: (value) {
                     _feedback = value!;
                   },
+                  maxLines: 2,
+                ),
+                SizedBox(height: 16),
+                TextFormField(
+                  cursorColor: accent75,
+                  decoration: InputDecoration(
+                    labelText: 'Comment',
+                    labelStyle: TextStyle(color: accentColor),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                    focusedErrorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your Comment';
+                    }
+                  },
+                  onSaved: (value) {
+                    _comment = value ?? '';
+                  },
                   maxLines: 5,
                 ),
-                SizedBox(height: 32),
+                SizedBox(height: 35),
                 Text(
                   'Rate Us',
                   style: TextStyle(
