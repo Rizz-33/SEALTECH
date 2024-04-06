@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/client/category/chemicals.dart';
@@ -10,12 +11,14 @@ import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
 class Home extends StatelessWidget {
-  
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 100,
           title: Center(
-            child: Image.asset('lib/images/logo-word-no-background.png', width: 160,),
+            child: Image.asset(
+              'lib/images/logo-word-no-background.png',
+              width: 160,
+            ),
           ),
           backgroundColor: primary75,
         ),
@@ -28,7 +31,9 @@ class Home extends StatelessWidget {
                 height: 180,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('lib/images/home_client.png',),
+                    image: AssetImage(
+                      'lib/images/home_client.png',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -39,7 +44,9 @@ class Home extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const SizedBox(height: 8,),
+                        const SizedBox(
+                          height: 8,
+                        ),
                         Text(
                           'Discover Unrivaled\nWaterproofing Services\nwith SealTech!',
                           style: GoogleFonts.inter(
@@ -54,7 +61,8 @@ class Home extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ContactUsPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => ContactUsPage()),
                             );
                           },
                           enableIcon: true,
@@ -67,7 +75,9 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               Container(
                 alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.only(left: 16),
@@ -94,14 +104,22 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 5,
+              ),
               // Add the MyRandomProductWidget here
               RandomProductWidget(),
               // More of your existing widgets...
-              const SizedBox(height: 8,),
+              const SizedBox(
+                height: 8,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
-                child: Text('Category', style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold, color: primaryColor)),
+                child: Text('Category',
+                    style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor)),
               ),
               const SizedBox(height: 10),
               Row(
@@ -125,7 +143,9 @@ class Home extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset('lib/images/catService.png'),
-                          const SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           const Text('Services'),
                         ],
                       ),
@@ -150,7 +170,9 @@ class Home extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset('lib/images/catTools.png'),
-                          const SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           const Text('Tools'),
                         ],
                       ),
@@ -175,7 +197,9 @@ class Home extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset('lib/images/catChemicals.png'),
-                          const SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           const Text('Chemicals'),
                         ],
                       ),
@@ -215,22 +239,66 @@ class Home extends StatelessWidget {
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
-                child: Text('Feedback', style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold, color: primaryColor)),
+                child: Text('Feedback',
+                    style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor)),
               ),
               const SizedBox(height: 10),
-              FeedbackTemplate(
-                title: 'Name',
-                additionalText: 'Feedback [comment]',
-                stars: [Icons.star, Icons.star, Icons.star, Icons.star_half,Icons.star_border],
-                comment: 'Your comment',
+
+              StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection('feedback')
+                    .orderBy('timestamp',
+                        descending:
+                            true) // Order feedbacks by timestamp in descending order
+                    .limit(
+                        2) // Limit the query to fetch only the latest 2 feedbacks
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text('Error: ${snapshot.error}'),
+                    );
+                  }
+                  if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
+                    return Center(
+                      child: Text('No feedback available.'),
+                    );
+                  }
+
+                  return Column(
+                    children: snapshot.data!.docs.map((document) {
+                      Map<String, dynamic> data =
+                          document.data() as Map<String, dynamic>;
+
+                      return Column(
+                        children: [
+                          FeedbackTemplate(
+                            title: data['feedback'] ?? '',
+                            additionalText: 'Feedback',
+                            stars: List<IconData>.generate(
+                              data['rating'].toInt(),
+                              (index) => index < data['rating']
+                                  ? Icons.star
+                                  : Icons.star_border,
+                            ),
+                            comment: data['comment'] ?? '',
+                          ),
+                          SizedBox(height: 10),
+                        ],
+                      );
+                    }).toList(),
+                  );
+                },
               ),
-              const SizedBox(height: 16,),
-              FeedbackTemplate(
-                title: 'Name',
-                additionalText: 'Feedback [comment]',
-                stars: [Icons.star, Icons.star, Icons.star, Icons.star_half,Icons.star_border],
-                comment: 'Your comment',
-              )
             ],
           ),
         ),
