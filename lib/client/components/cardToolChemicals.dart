@@ -36,69 +36,72 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
           ),
         ],
       ),
-      body: GestureDetector(
-        onTap: () {
-          _navigate(context);
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 20,),
-              Image.asset(
-                widget.product.imagePath,
-                height: 250,
-              ),
-              SizedBox(height: 30,),
-              Text(
-                widget.product.name,
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: GestureDetector(
+          onTap: () {
+            _navigate(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 20,),
+                Image.asset(
+                  widget.product.imagePath,
+                  height: 250,
                 ),
-              ),
-              SizedBox(height: 6,),
-              Text(
-                '${_getCategoryString(widget.product.category)}',
-                style: TextStyle(color: accentColor),
-              ),
-              SizedBox(height: 16),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  widget.product.description,
-                  textAlign: TextAlign.center,
+                SizedBox(height: 30,),
+                Text(
+                  widget.product.name,
+                  style: TextStyle(
+                    color: primaryColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              SizedBox(height: 16),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Price: ',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(
-                      text: '${_formatPrice(widget.product.price, widget.product.category)}',
-                      style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                SizedBox(height: 6,),
+                Text(
+                  '${_getCategoryString(widget.product.category)}',
+                  style: TextStyle(color: accentColor),
                 ),
-              ),
-
-              SizedBox(height: 10),
-              Button(
-                buttonText: _getButtonText(widget.product.category),
-                onPressed: () {
-                  _navigate(context);
-                },
-                width: 380,
-                isStroked: false,
-                color: 'orange',
-              ),
-            ],
+                SizedBox(height: 16),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    widget.product.description,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: 16),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Price: ',
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: '${_formatPrice(widget.product.price, widget.product.category)}',
+                        style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+        
+                SizedBox(height: 10),
+                Button(
+                  buttonText: _getButtonText(widget.product.category),
+                  onPressed: () {
+                    _navigate(context);
+                  },
+                  width: 380,
+                  isStroked: false,
+                  color: 'orange',
+                ),
+                SizedBox(height: 25),
+              ],
+            ),
           ),
         ),
       ),
@@ -112,7 +115,7 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
         MaterialPageRoute(builder: (context) => ContactUsPage()),
       );
     } else {
-      onTap: () => addToCart(widget.product, );
+      () => addToCart(widget.product,);
     }
   }
 
