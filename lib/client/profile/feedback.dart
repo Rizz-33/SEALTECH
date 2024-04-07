@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:sealtech/components/theme.dart';
 
 class FeedbackTemplate extends StatelessWidget {
-  final String title;
-  final String additionalText;
+  final String email;
   final List<IconData> stars;
+  final String feedback;
   final String comment;
 
   FeedbackTemplate({
-    required this.title,
-    required this.additionalText,
+    required this.email,
     required this.stars,
+    required this.feedback,
     required this.comment,
   });
 
@@ -19,7 +19,7 @@ class FeedbackTemplate extends StatelessWidget {
     return Center(
       child: Container(
         width: 380,
-        height: 150,
+        height: 130,
         decoration: BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.circular(10),
@@ -42,7 +42,7 @@ class FeedbackTemplate extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 16, bottom: 80),
+                  padding: EdgeInsets.only(left: 16, bottom: 50),
                   child: Icon(
                     Icons.person,
                     size: 48,
@@ -55,18 +55,21 @@ class FeedbackTemplate extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 16),
-                      child: Text(title,
-                          style: TextStyle(fontSize: 16, color: Colors.black)),
+                      child: Text(feedback,
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600)),
                     ),
                     SizedBox(height: 4),
-                    Text(additionalText,
+                    Text(email,
                         style: TextStyle(fontSize: 12, color: Colors.black)),
                   ],
                 ),
               ],
             ),
             Positioned(
-              bottom: 10,
+              bottom: 15,
               left: 16,
               child: SizedBox(
                 width: MediaQuery.of(context).size.width - 32,

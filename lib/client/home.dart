@@ -250,11 +250,8 @@ class Home extends StatelessWidget {
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('feedback')
-                    .orderBy('timestamp',
-                        descending:
-                            true) // Order feedbacks by timestamp in descending order
-                    .limit(
-                        2) // Limit the query to fetch only the latest 2 feedbacks
+                    .orderBy('timestamp', descending: true)
+                    .limit(2)
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -282,8 +279,8 @@ class Home extends StatelessWidget {
                       return Column(
                         children: [
                           FeedbackTemplate(
-                            title: data['feedback'] ?? '',
-                            additionalText: 'Feedback',
+                            feedback: data['feedback'] ?? '',
+                            email: data['email'] ?? '',
                             stars: List<IconData>.generate(
                               data['rating'].toInt(),
                               (index) => index < data['rating']
