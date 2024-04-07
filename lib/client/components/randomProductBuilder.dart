@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/components/cardToolChemicals.dart';
+import 'package:sealtech/client/components/product.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
-import 'package:sealtech/client/components/product.dart';
 
 class RandomProductWidget extends StatelessWidget {
   @override
@@ -55,7 +55,7 @@ class RandomProductWidget extends StatelessWidget {
         imagePath: product.imagePath,
         title: product.name,
         subtitle: _getCategoryString(product.category),
-        price: '${_formatPrice(product.price)} LKR',
+        price: _getFormattedPrice(product),
       ),
     );
   }
@@ -73,7 +73,13 @@ class RandomProductWidget extends StatelessWidget {
     }
   }
 
-  String _formatPrice(double price) {
-    return price.toStringAsFixed(2);
+  String _getFormattedPrice(Product product) {
+    if (product.category == ProductCategory.Services) {
+      // Price in million LKR for services
+      return '${(product.price).toStringAsFixed(2)} million LKR';
+    } else {
+      // Price in LKR for other categories
+      return '${product.price.toStringAsFixed(2)} LKR';
+    }
   }
 }
