@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sealtech/client/cart/payment.dart';
 import 'package:sealtech/client/components/carttile.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/components/button.dart';
@@ -203,7 +204,16 @@ class Cart extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 24),
-                Button(buttonText: 'Proceed to Checkout', onPressed: (){}, color: 'orange', enableIcon: true, width: 380,)
+                Button(
+                  buttonText: 'Proceed to Checkout',
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentPage()),
+                  ),
+                  color: 'orange',
+                  enableIcon: true,
+                  width: 380,
+                )
               ],
             ),
           ),

@@ -150,7 +150,7 @@ class SealTech extends ChangeNotifier {
     for (CartItem cartItem in _cart) {
       double itemTotal = cartItem.product.price;
 
-      total += itemTotal * cartItem.quantity;
+      total += itemTotal * cartItem.quantity + 200;
     }
 
     return total;
