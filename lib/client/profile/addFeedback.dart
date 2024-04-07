@@ -30,11 +30,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
     String? email = user?.email;
+    String? name = user?.displayName;
 
-    if (email != null) {
+    if (email != null && name != null) {
       _firestore.collection('feedback').add({
+        'name': name,
         'email': email,
         'feedback': _feedback,
+        'comment': _comment,
         'rating': _rating,
         'timestamp': Timestamp.now(),
       }).then((value) {
@@ -43,7 +46,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
         _showAlertDialog('Error', 'Failed to submit feedback: $error');
       });
     } else {
-      _showAlertDialog('Error', 'User email not available.');
+      _showAlertDialog('Error', 'User email or name not available.');
     }
   }
 
