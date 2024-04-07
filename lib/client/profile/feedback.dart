@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:sealtech/components/theme.dart';
 
 class FeedbackTemplate extends StatelessWidget {
-  final String title;
-  final String additionalText;
+  final String name;
+  final String email;
   final List<IconData> stars;
-  final String comment;
+  final String feedback;
 
   FeedbackTemplate({
-    required this.title,
-    required this.additionalText,
+    required this.name,
+    required this.email,
     required this.stars,
-    required this.comment,
+    required this.feedback,
   });
 
   @override
@@ -19,7 +19,7 @@ class FeedbackTemplate extends StatelessWidget {
     return Center(
       child: Container(
         width: 380,
-        height: 150,
+        height: 130,
         decoration: BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.circular(10),
@@ -55,23 +55,23 @@ class FeedbackTemplate extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 16),
-                      child: Text(title,
+                      child: Text(name,
                           style: TextStyle(fontSize: 16, color: Colors.black)),
                     ),
                     SizedBox(height: 4),
-                    Text(additionalText,
+                    Text(email,
                         style: TextStyle(fontSize: 12, color: Colors.black)),
                   ],
                 ),
               ],
             ),
             Positioned(
-              bottom: 10,
+              bottom: 15,
               left: 16,
               child: SizedBox(
                 width: MediaQuery.of(context).size.width - 32,
                 child: Text(
-                  comment,
+                  feedback,
                   style: TextStyle(fontSize: 13),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
