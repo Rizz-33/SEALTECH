@@ -30,11 +30,9 @@ class _FeedbackFormState extends State<FeedbackForm> {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
     String? email = user?.email;
-    String? name = user?.displayName;
 
-    if (email != null && name != null) {
+    if (email != null) {
       _firestore.collection('feedback').add({
-        'name': name,
         'email': email,
         'feedback': _feedback,
         'comment': _comment,
@@ -112,7 +110,36 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   onSaved: (value) {
                     _feedback = value!;
                   },
-                  maxLines: 5,
+                  maxLines: 2,
+                ),
+                TextFormField(
+                  cursorColor: accent75,
+                  decoration: InputDecoration(
+                    labelText: 'Comment',
+                    labelStyle: TextStyle(color: accentColor),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                    focusedErrorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: accentColor),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your comment';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _comment = value!;
+                  },
+                  maxLines: 3,
                 ),
                 SizedBox(height: 35),
                 Text(

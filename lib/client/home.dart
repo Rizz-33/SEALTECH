@@ -279,7 +279,7 @@ class Home extends StatelessWidget {
                       return Column(
                         children: [
                           FeedbackTemplate(
-                            name: data['name'] ?? '',
+                            feedback: data['feedback'] ?? '',
                             email: data['email'] ?? '',
                             stars: List<IconData>.generate(
                               data['rating'].toInt(),
@@ -287,7 +287,7 @@ class Home extends StatelessWidget {
                                   ? Icons.star
                                   : Icons.star_border,
                             ),
-                            feedback: data['feedback'] ?? '',
+                            comment: data['comment'] ?? '',
                           ),
                           SizedBox(height: 10),
                         ],
