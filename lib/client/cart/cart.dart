@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sealtech/client/cart/payment.dart';
 import 'package:sealtech/client/components/carttile.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/components/button.dart';
@@ -11,6 +12,17 @@ class Cart extends StatelessWidget {
     return Consumer<SealTech>(
       builder: (context, sealtech, child) {
         final userCart = sealtech.cart;
+
+        // Calculate subtotal
+        double subtotal = 0.0;
+        for (final cartItem in userCart) {
+          subtotal += cartItem.product.price * cartItem.quantity;
+        }
+
+        // Calculate total price including delivery fee and discount
+        double deliveryFee = 200.0;
+        double discount = 0.0;
+        double totalPrice = subtotal + deliveryFee - discount;
 
         return Scaffold(
           appBar: AppBar(
@@ -67,14 +79,14 @@ class Cart extends StatelessWidget {
                           ),
                         ),
                       )
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: userCart.length,
-                          itemBuilder: (context, index) {
-                            final cartItem = userCart[index];
-                            return MyCartTile(cartItem: cartItem);
-                          },
-                        ),
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: userCart.length,
+                        itemBuilder: (context, index) {
+                          final cartItem = userCart[index];
+                          return MyCartTile(cartItem: cartItem);
+                        },
                       ),
                 const SizedBox(height: 20),
                 Row(
@@ -96,10 +108,10 @@ class Cart extends StatelessWidget {
                     Expanded(
                       child: Align(
                         alignment: Alignment.centerRight,
-                        // child: Padding(
-                        //   padding: const EdgeInsets.only(right: 16.0),
-                        //   child: Text('${sealtech.subtotal.toStringAsFixed(2)} LKR'),
-                        // ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 16.0),
+                          child: Text('${subtotal.toStringAsFixed(2)} LKR'),
+                        ),
                       ),
                     ),
                   ],
@@ -126,7 +138,7 @@ class Cart extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 16.0),
-                          child: Text('200 LKR'),
+                          child: Text('${deliveryFee.toStringAsFixed(2)} LKR'),
                         ),
                       ),
                     ),
@@ -154,7 +166,7 @@ class Cart extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 16.0),
-                          child: Text('0 LKR', style: TextStyle(color: Colors.grey[600])),
+                          child: Text('${discount.toStringAsFixed(2)} LKR', style: TextStyle(color: Colors.grey[600])),
                         ),
                       ),
                     ),
@@ -185,14 +197,23 @@ class Cart extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 16.0),
-                          child: Text('5009999 LKR', style: TextStyle(fontWeight: FontWeight.w700, color: primaryColor, fontSize: 18)),
+                          child: Text('${totalPrice.toStringAsFixed(2)} LKR', style: TextStyle(fontWeight: FontWeight.w700, color: primaryColor, fontSize: 18)),
                         ),
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 24),
-                Button(buttonText: 'Proceed to Checkout', onPressed: (){}, color: 'orange', enableIcon: true, width: 380,)
+                Button(
+                  buttonText: 'Proceed to Checkout',
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentPage()),
+                  ),
+                  color: 'orange',
+                  enableIcon: true,
+                  width: 380,
+                )
               ],
             ),
           ),

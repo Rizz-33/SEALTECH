@@ -1,8 +1,7 @@
-
 import 'package:sealtech/client/models/productCategories.dart';
 
 class CartItem {
-  Product product;
+  final Product product;
   int quantity;
 
   CartItem({
@@ -10,7 +9,5 @@ class CartItem {
     this.quantity = 1,
   });
 
-  double get totalPrice {
-    return (product.price) * quantity;
-  }
+  double get totalPrice => product.price * quantity;
 }
