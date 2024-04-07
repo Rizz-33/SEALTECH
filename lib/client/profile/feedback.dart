@@ -56,7 +56,10 @@ class FeedbackTemplate extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 16),
                       child: Text(feedback,
-                          style: TextStyle(fontSize: 16, color: Colors.black)),
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600)),
                     ),
                     SizedBox(height: 4),
                     Text(email,
