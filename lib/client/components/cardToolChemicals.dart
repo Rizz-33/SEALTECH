@@ -115,7 +115,7 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
         MaterialPageRoute(builder: (context) => ContactUsPage()),
       );
     } else {
-      () => addToCart(widget.product,);
+      addToCart(widget.product);
     }
   }
 
