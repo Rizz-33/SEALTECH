@@ -1,9 +1,8 @@
-
-import 'package:cny_det/pages/appointment.dart';
-import 'package:cny_det/service/database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:random_string/random_string.dart';
+import 'package:sealtech/employee2/appoinment.dart';
+import 'package:sealtech/employee2/service/database.dart';
 
 class DataPage extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class DataPage extends StatefulWidget {
 
 class _DataPageState extends State<DataPage> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController deadlineController = TextEditingController(); 
+  TextEditingController deadlineController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
   @override
@@ -81,7 +80,7 @@ class _DataPageState extends State<DataPage> {
               ),
               SizedBox(height: 20.0),
               Text(
-                "Deadline", 
+                "Deadline",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 14.0,
@@ -96,7 +95,7 @@ class _DataPageState extends State<DataPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextField(
-                  controller: deadlineController, 
+                  controller: deadlineController,
                   decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),

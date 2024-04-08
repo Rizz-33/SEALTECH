@@ -1,15 +1,13 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cny_det/pages/DataPage.dart';
-import 'package:cny_det/pages/EmployeePage.dart';
-import 'package:cny_det/pages/sites.dart';
-import 'package:cny_det/pages/utils.dart';
-import 'package:cny_det/service/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sealtech/employee2/DataPage.dart';
+import 'package:sealtech/employee2/service/database.dart';
+import 'package:sealtech/employee2/sites.dart';
 
 class MyProfilePage extends StatefulWidget {
   const MyProfilePage({super.key});
@@ -53,16 +51,16 @@ class _MyProfilePageState extends State<MyProfilePage> {
             return GestureDetector(
               onTap: () {
                 Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => UserDetailsPage(
-          name: ds["Name"],
-          deadline: ds["Deadline"] ?? "Not specified",
-          address: ds["Address"],
-          duePayment: 50000.00, // You can pass the due payment here
-        ),
-      ),
-    );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserDetailsPage(
+                      name: ds["Name"],
+                      deadline: ds["Deadline"] ?? "Not specified",
+                      address: ds["Address"],
+                      duePayment: 50000.00, // You can pass the due payment here
+                    ),
+                  ),
+                );
                 // Handle the click event here
                 // You can navigate to another page or perform any action as needed
                 print("Clicked on data container for ${ds["Name"]}");
@@ -179,8 +177,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
             ],
           ),
         ),
-              
-    
       ),
     );
   }
