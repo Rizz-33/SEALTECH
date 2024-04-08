@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/Employee/Profile.dart' as fourthTab;
-import 'package:sealtech/Employee/Location.dart' as secondTab;
-import 'package:sealtech/Employee/SalaryCalculator.dart' as thirdTab;
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/Employee/Home.dart' as firstTab;
+import 'package:sealtech/Employee/Location.dart' as secondTab;
+import 'package:sealtech/Employee/SalaryCalculator.dart' as thirdTab;
+import 'package:sealtech/Employee/Profile.dart' as fourthTab;
 
 //Initial widget
 class NavbarE extends StatefulWidget {

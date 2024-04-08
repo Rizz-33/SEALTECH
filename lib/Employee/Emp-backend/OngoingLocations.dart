@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-class UserDetailsPage extends StatefulWidget {
+class OngoingLocations extends StatefulWidget {
   final String name;
   final String deadline;
   final String address;
   final double duePayment;
 
-  UserDetailsPage({
+  OngoingLocations({
     required this.name,
     required this.deadline,
     required this.address,
@@ -16,10 +15,10 @@ class UserDetailsPage extends StatefulWidget {
   });
 
   @override
-  State<UserDetailsPage> createState() => _UserDetailsPageState();
+  State<OngoingLocations> createState() => _OngoingLocationsState();
 }
 
-class _UserDetailsPageState extends State<UserDetailsPage> {
+class _OngoingLocationsState extends State<OngoingLocations> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

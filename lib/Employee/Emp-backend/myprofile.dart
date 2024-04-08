@@ -49,7 +49,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UserDetailsPage(
+                    builder: (context) => OngoingLocations(
                       name: ds["Name"],
                       deadline: ds["Deadline"] ?? "Not specified",
                       address: ds["Address"],

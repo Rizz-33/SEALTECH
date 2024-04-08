@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/Employee/Emp-backend/service/database.dart';
+import 'package:sealtech/components/button.dart';
 
 class appointmentp extends StatefulWidget {
   const appointmentp({super.key});
@@ -50,66 +51,57 @@ class _appointmentpState extends State<appointmentp> {
         elevation: 0.00,
         backgroundColor: const Color.fromRGBO(251, 147, 0, 1),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Center(
-                child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                    10), // Adjust the border radius as needed
-                border: Border.all(
-                    color: Colors.black, width: 1), // Add border styling
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 22, 74, 204).withOpacity(0.5),
-                    spreadRadius: 3,
-                    blurRadius: 5,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: 20,
               ),
-              child: Image.network(
-                  "https://149789576.v2.pressablecdn.com/wp-content/uploads/2022/02/appointment.png"),
-              width: 270,
-              height: 190,
-            )),
-            TextFormField(
-              controller: nameController,
-              decoration: InputDecoration(labelText: 'Your Name'),
-            ),
-            SizedBox(height: 20),
-            TextFormField(
-              controller: withWhomController,
-              decoration: InputDecoration(
-                  labelText: 'Who do you want to make an appointment with?'),
-            ),
-            SizedBox(height: 20),
-            TextFormField(
-              controller: dateTimeController,
-              decoration: InputDecoration(labelText: 'Available Date and Time'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                Map<String, dynamic> appointmentInfoMap = {
-                  "Your Name": nameController.text,
-                  "With Whom": withWhomController.text,
-                  "Date and Time": dateTimeController.text,
-                };
-                await DatabaseMethods().addAppointment(appointmentInfoMap);
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('Appointment added successfully'),
-                ));
-              },
-              child: Text('Submit'),
-            ),
-          ],
+              Center(
+                  child: Container(
+                child: Image.asset(
+                  'lib/images/Appointment.png',
+                  height: 200,
+                ),
+                width: 270,
+                height: 190,
+              )),
+              TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: 'Your Name'),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: withWhomController,
+                decoration: InputDecoration(
+                    labelText: 'Who do you want to make an appointment with?'),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: dateTimeController,
+                decoration:
+                    InputDecoration(labelText: 'Available Date and Time'),
+              ),
+              SizedBox(height: 20),
+              Button(
+                onPressed: () async {
+                  Map<String, dynamic> appointmentInfoMap = {
+                    "Your Name": nameController.text,
+                    "With Whom": withWhomController.text,
+                    "Date and Time": dateTimeController.text,
+                  };
+                  await DatabaseMethods().addAppointment(appointmentInfoMap);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Appointment added successfully'),
+                  ));
+                },
+                buttonText: 'Submit',
+              ),
+            ],
+          ),
         ),
       ),
     );
