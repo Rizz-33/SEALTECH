@@ -50,7 +50,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
     return Container(
       height: 100,
       decoration: BoxDecoration(
-        color: accent25,
+        color: primary25,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40),
           topRight: Radius.circular(40),
@@ -62,7 +62,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
           // Profile image of driver
           Container(
             decoration: BoxDecoration(
-              color: accent50,
+              color: secondaryColor,
               shape: BoxShape.circle,
             ),
             child: IconButton(
