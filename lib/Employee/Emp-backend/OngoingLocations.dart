@@ -54,7 +54,7 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                       name: ds["Name"],
                       deadline: ds["Deadline"] ?? "Not specified",
                       address: ds["Address"],
-                      duePayment: 50000.00, // You can pass the due payment here
+                      duePayment: 50000.00,
                     ),
                   ),
                 );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/Employee/Attendance.dart';
+import 'package:sealtech/Employee/Emp-backend/OngoingLocations.dart';
 import 'package:sealtech/Employee/Emp-backend/appoinment.dart';
 import 'package:sealtech/Employee/Holidays.dart';
-import 'package:sealtech/Employee/Location.dart';
 import 'package:sealtech/Employee/SalaryCalculator.dart';
 import 'package:sealtech/components/theme.dart';
 
@@ -95,7 +95,7 @@ class _Home_PageState extends State<Home_Page> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Location_Page()),
+                                builder: (context) => OngoingLocations()),
                           );
                         },
                         style: OutlinedButton.styleFrom(

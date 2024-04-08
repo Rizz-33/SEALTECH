@@ -65,18 +65,19 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
             SizedBox(
               width: 404,
               height: 213,
-              child: Image.network(
-                'https://www.europarl.europa.eu/resources/library/images/20180612PHT05623/20180612PHT05623-ml.jpg',
-                fit: BoxFit.cover,
+              child: Image.asset(
+                'lib/images/Locationdetailed.png',
+                height: 200,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Center(
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  width: 300,
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 206, 134, 34),
+                    color: const Color.fromARGB(255, 247, 219, 180),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
@@ -85,8 +86,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Name: ${widget.name}',
                         style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
                       ),
@@ -94,8 +95,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Deadline: ${widget.deadline}',
                         style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
                       ),
@@ -103,8 +104,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Address: ${widget.address}',
                         style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
                       ),
@@ -112,8 +113,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Due Payment: \$${widget.duePayment.toStringAsFixed(2)}',
                         style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
                       ),
@@ -203,13 +204,17 @@ class _MyCheckBoxContainerState extends State<MyCheckBoxContainer> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isChecked ? Colors.black : Colors.transparent,
+                  color: isChecked
+                      ? Colors.black
+                      : const Color.fromARGB(0, 83, 76, 76),
                   width: 2.0,
                 ),
               ),
               child: CircleAvatar(
                 radius: 15,
-                backgroundColor: isChecked ? Colors.black : Colors.white,
+                backgroundColor: isChecked
+                    ? Colors.black
+                    : Color.fromARGB(255, 229, 158, 58),
                 child: isChecked
                     ? const Icon(
                         Icons.check,
