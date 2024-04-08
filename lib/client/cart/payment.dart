@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:sealtech/client/cart/currentlocation.dart';
 import 'package:sealtech/client/cart/deliveryprogress.dart';
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
@@ -74,6 +75,7 @@ class _PaymentPageState extends State<PaymentPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
+              MyCurrentLocation(),
               // Credit card
               CreditCardWidget(
                 cardNumber: cardNumber,
