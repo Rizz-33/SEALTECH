@@ -15,18 +15,18 @@ class AuthService {
   }
 
   //sign in
-  Future<UserCredential> signInWithEmailPassword(String email, password, String name) async {
+  Future<UserCredential> signInWithEmailPassword(
+      String email, password, String name) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
 
       // save user if it doesn't already exist
-      await _firestore.collection("Users").doc(userCredential.user!.uid).set(
-        {
-          'uid' : userCredential.user!.uid,
-          'email' : email,
-          'name' : name, // Save user's name
-        }
-      );
+      await _firestore.collection("Users").doc(userCredential.user!.uid).set({
+        'uid': userCredential.user!.uid,
+        'email': email,
+        'name': name,
+      });
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -35,21 +35,19 @@ class AuthService {
   }
 
   //sign up
-  Future<UserCredential> signUpWithEmailAndPassword(String email, password, String name) async {
+  Future<UserCredential> signUpWithEmailAndPassword(
+      String email, password, String name) async {
     try {
       //create user
-      UserCredential userCredential =
-        await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
 
       // save user
-      await _firestore.collection("Users").doc(userCredential.user!.uid).set(
-        {
-          'uid' : userCredential.user!.uid,
-          'email' : email,
-          'name' : name, // Save user's name
-        }
-      );
+      await _firestore.collection("Users").doc(userCredential.user!.uid).set({
+        'uid': userCredential.user!.uid,
+        'email': email,
+        'name': name, // Save user's name
+      });
 
       return userCredential;
     } on FirebaseAuthException catch (e) {

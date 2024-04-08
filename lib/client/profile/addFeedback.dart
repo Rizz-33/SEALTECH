@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // Add this import
@@ -12,7 +13,7 @@ class FeedbackForm extends StatefulWidget {
 class _FeedbackFormState extends State<FeedbackForm> {
   final _formKey = GlobalKey<FormState>();
   String _feedback = '';
-  String _comment = ''; // New variable for comment
+  String _comment = '';
   double _rating = 0;
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -26,16 +27,25 @@ class _FeedbackFormState extends State<FeedbackForm> {
   }
 
   void _sendFeedbackToFirestore() {
-    _firestore.collection('feedback').add({
-      'feedback': _feedback,
-      'comment': _comment,
-      'rating': _rating,
-      'timestamp': Timestamp.now(),
-    }).then((value) {
-      _showAlertDialog('Success', 'Feedback submitted successfully');
-    }).catchError((error) {
-      _showAlertDialog('Error', 'Failed to submit feedback: $error');
-    });
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = auth.currentUser;
+    String? email = user?.email;
+
+    if (email != null) {
+      _firestore.collection('feedback').add({
+        'email': email,
+        'feedback': _feedback,
+        'comment': _comment,
+        'rating': _rating,
+        'timestamp': Timestamp.now(),
+      }).then((value) {
+        _showAlertDialog('Success', 'Feedback submitted successfully');
+      }).catchError((error) {
+        _showAlertDialog('Error', 'Failed to submit feedback: $error');
+      });
+    } else {
+      _showAlertDialog('Error', 'User email or name not available.');
+    }
   }
 
   void _showAlertDialog(String title, String message) {
@@ -102,7 +112,6 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   },
                   maxLines: 2,
                 ),
-                SizedBox(height: 16),
                 TextFormField(
                   cursorColor: accent75,
                   decoration: InputDecoration(
@@ -123,13 +132,14 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your Comment';
+                      return 'Please enter your comment';
                     }
+                    return null;
                   },
                   onSaved: (value) {
-                    _comment = value ?? '';
+                    _comment = value!;
                   },
-                  maxLines: 5,
+                  maxLines: 3,
                 ),
                 SizedBox(height: 35),
                 Text(
