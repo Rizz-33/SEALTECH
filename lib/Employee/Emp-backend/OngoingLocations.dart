@@ -150,7 +150,7 @@ class _OngoingLocationsState extends State<OngoingLocations> {
           },
           child: Icon(Icons.add),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromRGBO(255, 252, 245, 1),
         appBar: AppBar(
           title: Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),

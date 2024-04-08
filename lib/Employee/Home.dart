@@ -54,7 +54,7 @@ class _Home_PageState extends State<Home_Page> {
         body: SingleChildScrollView(
             child: Column(children: [
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -131,7 +131,7 @@ class _Home_PageState extends State<Home_Page> {
               ),
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 35),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -148,7 +148,7 @@ class _Home_PageState extends State<Home_Page> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             GestureDetector(
               onTap: () {
@@ -244,7 +244,7 @@ class _Home_PageState extends State<Home_Page> {
             ),
           ]),
           const SizedBox(
-            height: 20,
+            height: 35,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
