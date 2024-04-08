@@ -86,7 +86,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Name: ${widget.name}',
                         style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
@@ -95,7 +95,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Deadline: ${widget.deadline}',
                         style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
@@ -104,7 +104,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Address: ${widget.address}',
                         style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),
@@ -113,7 +113,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       Text(
                         'Due Payment: \$${widget.duePayment.toStringAsFixed(2)}',
                         style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.black87,
                         ),

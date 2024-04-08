@@ -184,7 +184,7 @@ class _OngoingLocationsState extends State<OngoingLocations> {
           backgroundColor: const Color.fromRGBO(251, 147, 0, 1),
         ),
         body: Container(
-          margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
+          margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
           child: Column(
             children: [
               Expanded(child: allEmployeeDetails()),
