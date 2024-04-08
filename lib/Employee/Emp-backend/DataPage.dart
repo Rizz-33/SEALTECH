@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:random_string/random_string.dart';
-import 'package:sealtech/employee2/appoinment.dart';
-import 'package:sealtech/employee2/service/database.dart';
+import 'package:sealtech/Employee/Emp-backend/appoinment.dart';
+import 'package:sealtech/Employee/Emp-backend/service/database.dart';
 
 class DataPage extends StatefulWidget {
   @override

@@ -1,13 +1,10 @@
 import 'dart:async';
-import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:sealtech/employee2/DataPage.dart';
-import 'package:sealtech/employee2/service/database.dart';
-import 'package:sealtech/employee2/sites.dart';
+import 'package:sealtech/Employee/Emp-backend/DataPage.dart';
+import 'package:sealtech/Employee/Emp-backend/service/database.dart';
+import 'package:sealtech/Employee/Emp-backend/sites.dart';
 
 class MyProfilePage extends StatefulWidget {
   const MyProfilePage({super.key});
