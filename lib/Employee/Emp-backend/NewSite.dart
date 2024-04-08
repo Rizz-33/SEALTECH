@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:random_string/random_string.dart';
 import 'package:sealtech/Employee/Emp-backend/appoinment.dart';
 import 'package:sealtech/Employee/Emp-backend/service/database.dart';
+import 'package:sealtech/components/button.dart';
 
 class DataPage extends StatefulWidget {
   @override
@@ -19,21 +21,36 @@ class _DataPageState extends State<DataPage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 231, 150, 20),
-        title: Align(
-          alignment: Alignment.center,
-          child: Text(
-            "new sites",
-            textAlign: TextAlign.left,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'New Site',
+                style: GoogleFonts.poppins(
+                    textStyle: Theme.of(context).textTheme.displayLarge,
+                    color: const Color.fromARGB(255, 70, 66, 68),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600),
+              ),
+            ],
           ),
         ),
-        centerTitle: true,
+        titleSpacing: 4.0,
+        toolbarHeight: 65,
+        toolbarOpacity: 0.9,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-          ),
+              bottomRight: Radius.circular(18),
+              bottomLeft: Radius.circular(18)),
         ),
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        elevation: 0.00,
+        backgroundColor: const Color.fromRGBO(251, 147, 0, 1),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -42,21 +59,12 @@ class _DataPageState extends State<DataPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Container(
-                  width: 250,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1.0,
-                    ),
-                  ),
-                  child: Image(
-                    image: AssetImage('assets/download.jpg'),
-                  ),
-                ),
-              ),
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 0),
+                      child: Image.asset(
+                        'lib/images/location.png',
+                        height: 200,
+                      ))),
               SizedBox(height: 50.0),
               Text(
                 "Name",
@@ -122,7 +130,7 @@ class _DataPageState extends State<DataPage> {
               ),
               SizedBox(height: 30.0),
               Center(
-                child: ElevatedButton(
+                child: Button(
                   onPressed: () async {
                     String Id = randomAlphaNumeric(10);
                     Map<String, dynamic> employeeInfoMap = {
@@ -145,14 +153,7 @@ class _DataPageState extends State<DataPage> {
                       );
                     });
                   },
-                  child: const Text(
-                    "Submit",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w100,
-                      color: Colors.red,
-                    ),
-                  ),
+                  buttonText: 'Submit',
                 ),
               ),
               SizedBox(height: 30.0),

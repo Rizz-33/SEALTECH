@@ -25,7 +25,7 @@ class _appointmentpState extends State<appointmentp> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Text(
-                'new appointments',
+                'Appointments',
                 style: GoogleFonts.poppins(
                   textStyle: Theme.of(context).textTheme.displayLarge,
                   color: const Color.fromARGB(255, 70, 66, 68),
