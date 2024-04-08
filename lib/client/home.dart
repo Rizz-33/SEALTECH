@@ -256,7 +256,7 @@ class Home extends StatelessWidget {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
@@ -266,7 +266,7 @@ class Home extends StatelessWidget {
                     );
                   }
                   if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
-                    return Center(
+                    return const Center(
                       child: Text('No feedback available.'),
                     );
                   }
