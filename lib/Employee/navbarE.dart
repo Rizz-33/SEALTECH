@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/Employee/Home.dart' as firstTab;
-import 'package:sealtech/Employee/Location.dart' as secondTab;
+import 'package:sealtech/Employee/Emp-backend/OngoingLocations.dart'
+    as secondTab;
 import 'package:sealtech/Employee/SalaryCalculator.dart' as thirdTab;
 import 'package:sealtech/Employee/Profile.dart' as fourthTab;
 
@@ -32,7 +33,7 @@ class HomeWidget extends State<NavbarE> {
           },
           children: const <Widget>[
             firstTab.Home_Page(),
-            secondTab.Location_Page(),
+            secondTab.OngoingLocations(),
             thirdTab.Salary_Page(),
             fourthTab.Profile_Page(),
           ],
