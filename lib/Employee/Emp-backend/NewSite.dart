@@ -5,6 +5,7 @@ import 'package:random_string/random_string.dart';
 import 'package:sealtech/Employee/Emp-backend/appoinment.dart';
 import 'package:sealtech/Employee/Emp-backend/service/database.dart';
 import 'package:sealtech/components/button.dart';
+import 'package:sealtech/components/theme.dart';
 
 class DataPage extends StatefulWidget {
   @override
@@ -66,66 +67,57 @@ class _DataPageState extends State<DataPage> {
                         height: 200,
                       ))),
               SizedBox(height: 50.0),
-              Text(
-                "Name",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Container(
-                padding: EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
                   controller: nameController,
-                  decoration: InputDecoration(border: InputBorder.none),
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    labelStyle: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                    border: const UnderlineInputBorder(),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(height: 20.0),
-              Text(
-                "Deadline",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Container(
-                padding: EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
                   controller: deadlineController,
-                  decoration: InputDecoration(border: InputBorder.none),
+                  decoration: InputDecoration(
+                    labelText: 'Deadline',
+                    labelStyle: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                    border: const UnderlineInputBorder(),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(height: 20.0),
-              Text(
-                "Address",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Container(
-                padding: EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextField(
                   controller: addressController,
-                  decoration: InputDecoration(border: InputBorder.none),
+                  decoration: InputDecoration(
+                    labelText: 'Location of site',
+                    labelStyle: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                    border: const UnderlineInputBorder(),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: primaryColor),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 30.0),
@@ -133,25 +125,55 @@ class _DataPageState extends State<DataPage> {
                 child: Button(
                   onPressed: () async {
                     String Id = randomAlphaNumeric(10);
-                    Map<String, dynamic> employeeInfoMap = {
-                      "Name": nameController.text,
-                      "Deadline": deadlineController.text,
-                      "Id": Id,
-                      "Address": addressController.text,
-                    };
-                    await DatabaseMethods()
-                        .addEmployeeDetails(employeeInfoMap, Id)
-                        .then((value) {
+                    String name = nameController.text;
+                    String deadline = deadlineController.text;
+                    String address = addressController.text;
+
+                    if (name.isNotEmpty &&
+                        deadline.isNotEmpty &&
+                        address.isNotEmpty) {
+                      Map<String, dynamic> employeeInfoMap = {
+                        "Name": name,
+                        "Deadline": deadline,
+                        "Id": Id,
+                        "Address": address,
+                      };
+
+                      try {
+                        await DatabaseMethods()
+                            .addEmployeeDetails(employeeInfoMap, Id);
+                        Fluttertoast.showToast(
+                          msg: "Details added successfully",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.blue,
+                          textColor: Colors.white,
+                          fontSize: 16.0,
+                        );
+                      } catch (e) {
+                        print("Error adding employee details: $e");
+                        Fluttertoast.showToast(
+                          msg: "Failed to add details. Please try again later.",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0,
+                        );
+                      }
+                    } else {
                       Fluttertoast.showToast(
-                        msg: "Details added successfully",
+                        msg: "Please fill in all fields",
                         toastLength: Toast.LENGTH_SHORT,
                         gravity: ToastGravity.CENTER,
                         timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.orange,
                         textColor: Colors.white,
                         fontSize: 16.0,
                       );
-                    });
+                    }
                   },
                   buttonText: 'Submit',
                 ),
@@ -168,16 +190,17 @@ class _DataPageState extends State<DataPage> {
                   );
                 },
                 background: Container(
-                  color: Colors.green,
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  color: const Color.fromARGB(255, 176, 237, 178),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   alignment: Alignment.centerLeft,
-                  child: Icon(Icons.arrow_forward),
+                  child: const Icon(Icons.arrow_forward),
                 ),
-                child: Card(
+                child: const Card(
                   elevation: 5,
+                  color: Color.fromARGB(255, 252, 211, 146),
                   child: ListTile(
                     title: Text('Appointments'),
-                    subtitle: Text('Slide to view appointments'),
+                    subtitle: Text('Slide right to view appointments'),
                     leading: Icon(Icons.calendar_today),
                   ),
                 ),

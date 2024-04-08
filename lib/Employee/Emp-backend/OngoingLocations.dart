@@ -65,21 +65,21 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                 direction: DismissDirection.endToStart,
                 background: Container(
                   color: Colors.red,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.centerRight,
-                  child: Icon(Icons.delete, color: Colors.white),
+                  child: const Icon(Icons.delete, color: Colors.white),
                 ),
                 onDismissed: (direction) {
                   // Delete the entry from the database
                   DatabaseMethods().deleteEmployee(ds.id);
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 20.0),
+                  margin: const EdgeInsets.only(bottom: 20.0),
                   child: Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -93,10 +93,9 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                             children: [
                               Text(
                                 "Name: ${ds["Name"]}",
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -107,24 +106,23 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                                   addresscontroller.text = ds["Address"];
                                   EditEmployeeDetails(ds.id);
                                 },
-                                child: Icon(Icons.edit, color: Colors.orange),
+                                child: const Icon(Icons.edit,
+                                    color: Colors.orange),
                               ),
                             ],
                           ),
                           if (ds["Deadline"] != null)
                             Text(
                               "Deadline: ${ds["Deadline"]}",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 212, 226, 56),
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400),
                             ),
                           Text(
                             "Address: ${ds["Address"]}",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -209,12 +207,12 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(Icons.cancel),
+                      child: const Icon(Icons.cancel),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 60.0,
                     ),
-                    Text(
+                    const Text(
                       "Edit",
                       style: TextStyle(
                         color: Colors.orange,
@@ -222,7 +220,7 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "Details",
                       style: TextStyle(
                         color: Colors.orange,
@@ -232,10 +230,10 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Name",
                   style: TextStyle(
                     color: Colors.black,
@@ -243,24 +241,24 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
                     controller: namecontroller,
-                    decoration: InputDecoration(border: InputBorder.none),
+                    decoration: const InputDecoration(border: InputBorder.none),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Deadline",
                   style: TextStyle(
                     color: Colors.black,
@@ -268,24 +266,24 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
                     controller: deadlineController,
-                    decoration: InputDecoration(border: InputBorder.none),
+                    decoration: const InputDecoration(border: InputBorder.none),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Address",
                   style: TextStyle(
                     color: Colors.black,
@@ -293,7 +291,7 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
