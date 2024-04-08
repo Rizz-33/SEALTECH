@@ -13,12 +13,12 @@ class MyReceipt extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 50),
+        padding: EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 15),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Thank you for your order !"),
+              Text("Thank you for your order !", style: TextStyle(color: primaryColor),),
               SizedBox(height: 25),
               Container(
                 decoration: BoxDecoration(
@@ -37,7 +37,8 @@ class MyReceipt extends StatelessWidget {
               Text(
                 "Estimated delivery time is: ${estimatedDeliveryTime.hour}:${estimatedDeliveryTime.minute}",
               ),
-              SizedBox(height: 25,)
+              SizedBox(height: 25,),
+              Text('SEALTECH Waterproofing Company\n345,Colombo\n+94 11 124 4832', textAlign: TextAlign.center,)
             ],
           ),
         ),
