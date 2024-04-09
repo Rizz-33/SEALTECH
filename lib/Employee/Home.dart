@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sealtech/Employee/Appointment.dart';
 import 'package:sealtech/Employee/Attendance.dart';
+import 'package:sealtech/Employee/Emp-backend/OngoingLocations.dart';
+import 'package:sealtech/Employee/Emp-backend/appoinment.dart';
 import 'package:sealtech/Employee/Holidays.dart';
-import 'package:sealtech/Employee/Location.dart';
 import 'package:sealtech/Employee/SalaryCalculator.dart';
 import 'package:sealtech/components/theme.dart';
 
@@ -54,7 +54,7 @@ class _Home_PageState extends State<Home_Page> {
         body: SingleChildScrollView(
             child: Column(children: [
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -95,7 +95,7 @@ class _Home_PageState extends State<Home_Page> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Location_Page()),
+                                builder: (context) => OngoingLocations()),
                           );
                         },
                         style: OutlinedButton.styleFrom(
@@ -131,7 +131,7 @@ class _Home_PageState extends State<Home_Page> {
               ),
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 35),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -148,7 +148,7 @@ class _Home_PageState extends State<Home_Page> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             GestureDetector(
               onTap: () {
@@ -185,7 +185,7 @@ class _Home_PageState extends State<Home_Page> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Appoinment_Page()),
+                  MaterialPageRoute(builder: (context) => appointmentp()),
                 );
               },
               child: Container(
@@ -244,7 +244,7 @@ class _Home_PageState extends State<Home_Page> {
             ),
           ]),
           const SizedBox(
-            height: 20,
+            height: 35,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
