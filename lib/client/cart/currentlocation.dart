@@ -46,7 +46,7 @@ class MyCurrentLocation extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
