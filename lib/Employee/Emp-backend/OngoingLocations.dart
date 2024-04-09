@@ -1,19 +1,19 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sealtech/Employee/Emp-backend/DataPage.dart';
+import 'package:sealtech/Employee/Emp-backend/NewSite.dart';
 import 'package:sealtech/Employee/Emp-backend/service/database.dart';
-import 'package:sealtech/Employee/Emp-backend/sites.dart';
+import 'package:sealtech/Employee/Emp-backend/UserDetailes.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class MyProfilePage extends StatefulWidget {
-  const MyProfilePage({super.key});
+class OngoingLocations extends StatefulWidget {
+  const OngoingLocations({super.key});
 
   @override
-  State<MyProfilePage> createState() => _MyProfilePageState();
+  State<OngoingLocations> createState() => _OngoingLocationsState();
 }
 
-class _MyProfilePageState extends State<MyProfilePage> {
+class _OngoingLocationsState extends State<OngoingLocations> {
   TextEditingController namecontroller = TextEditingController();
   TextEditingController deadlineController = TextEditingController();
   TextEditingController addresscontroller = TextEditingController();
@@ -54,12 +54,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       name: ds["Name"],
                       deadline: ds["Deadline"] ?? "Not specified",
                       address: ds["Address"],
-                      duePayment: 50000.00, // You can pass the due payment here
+                      duePayment: 50000.00,
                     ),
                   ),
                 );
-                // Handle the click event here
-                // You can navigate to another page or perform any action as needed
                 print("Clicked on data container for ${ds["Name"]}");
               },
               child: Dismissible(
@@ -67,21 +65,21 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 direction: DismissDirection.endToStart,
                 background: Container(
                   color: Colors.red,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.centerRight,
-                  child: Icon(Icons.delete, color: Colors.white),
+                  child: const Icon(Icons.delete, color: Colors.white),
                 ),
                 onDismissed: (direction) {
                   // Delete the entry from the database
                   DatabaseMethods().deleteEmployee(ds.id);
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 20.0),
+                  margin: const EdgeInsets.only(bottom: 20.0),
                   child: Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -95,10 +93,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
                             children: [
                               Text(
                                 "Name: ${ds["Name"]}",
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -109,24 +106,23 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                   addresscontroller.text = ds["Address"];
                                   EditEmployeeDetails(ds.id);
                                 },
-                                child: Icon(Icons.edit, color: Colors.orange),
+                                child: const Icon(Icons.edit,
+                                    color: Colors.orange),
                               ),
                             ],
                           ),
                           if (ds["Deadline"] != null)
                             Text(
                               "Deadline: ${ds["Deadline"]}",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 212, 226, 56),
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400),
                             ),
                           Text(
                             "Address: ${ds["Address"]}",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -154,20 +150,41 @@ class _MyProfilePageState extends State<MyProfilePage> {
           },
           child: Icon(Icons.add),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromRGBO(255, 252, 245, 1),
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 231, 150, 20),
-          title: Text("ongoing sites"),
-          centerTitle: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(25),
-              bottomRight: Radius.circular(25),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Ongoing Locations',
+                  style: GoogleFonts.poppins(
+                      textStyle: Theme.of(context).textTheme.displayLarge,
+                      color: const Color.fromARGB(255, 70, 66, 68),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
             ),
           ),
+          titleSpacing: 4.0,
+          toolbarHeight: 65,
+          toolbarOpacity: 0.9,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(18),
+                bottomLeft: Radius.circular(18)),
+          ),
+          iconTheme: const IconThemeData(
+            color: Colors.black,
+          ),
+          elevation: 0.00,
+          backgroundColor: const Color.fromRGBO(251, 147, 0, 1),
         ),
         body: Container(
-          margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
+          margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
           child: Column(
             children: [
               Expanded(child: allEmployeeDetails()),
@@ -190,12 +207,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(Icons.cancel),
+                      child: const Icon(Icons.cancel),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 60.0,
                     ),
-                    Text(
+                    const Text(
                       "Edit",
                       style: TextStyle(
                         color: Colors.orange,
@@ -203,7 +220,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "Details",
                       style: TextStyle(
                         color: Colors.orange,
@@ -213,10 +230,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Name",
                   style: TextStyle(
                     color: Colors.black,
@@ -224,24 +241,24 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
                     controller: namecontroller,
-                    decoration: InputDecoration(border: InputBorder.none),
+                    decoration: const InputDecoration(border: InputBorder.none),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Deadline",
                   style: TextStyle(
                     color: Colors.black,
@@ -249,24 +266,24 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
                     controller: deadlineController,
-                    decoration: InputDecoration(border: InputBorder.none),
+                    decoration: const InputDecoration(border: InputBorder.none),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   "Address",
                   style: TextStyle(
                     color: Colors.black,
@@ -274,7 +291,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Container(

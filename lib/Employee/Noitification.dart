@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sealtech/components/button.dart';
+import 'package:sealtech/components/theme.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,11 +16,10 @@ class NotificationSettingsPage extends StatefulWidget {
 }
 
 class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
-  // Controllers for managing notification preferences
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController pushNotificationController =
-      TextEditingController();
-  final TextEditingController smsController = TextEditingController();
+  // State variables to hold notification preferences
+  bool emailNotification = false;
+  bool pushNotification = false;
+  bool smsNotification = false;
 
   @override
   Widget build(BuildContext context) {
@@ -67,17 +67,32 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
             const SizedBox(height: 15),
             _buildNotificationSetting(
               'Receive Email Notifications',
-              emailController,
+              emailNotification,
+              (value) {
+                setState(() {
+                  emailNotification = value;
+                });
+              },
             ),
             const SizedBox(height: 5),
             _buildNotificationSetting(
               'Receive Push Notifications',
-              pushNotificationController,
+              pushNotification,
+              (value) {
+                setState(() {
+                  pushNotification = value;
+                });
+              },
             ),
             const SizedBox(height: 5),
             _buildNotificationSetting(
               'Receive SMS Notifications',
-              smsController,
+              smsNotification,
+              (value) {
+                setState(() {
+                  smsNotification = value;
+                });
+              },
             ),
             const SizedBox(height: 20),
             Button(
@@ -96,18 +111,14 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
   }
 
   Widget _buildNotificationSetting(
-      String label, TextEditingController controller) {
+      String label, bool value, Function(bool) onChanged) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(label),
         Switch(
-          value: controller.text.toLowerCase() == 'true',
-          onChanged: (value) {
-            setState(() {
-              controller.text = value.toString();
-            });
-          },
+          value: value,
+          onChanged: onChanged,
           activeColor: Color.fromRGBO(255, 132, 0, 1),
           inactiveThumbColor: Color.fromRGBO(255, 132, 0, 1),
         ),
@@ -116,15 +127,31 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
   }
 
   void _saveNotificationPreferences() {
-    // Implement logic to save notification preferences
-    // For example, you can save these values to a database or perform other actions
-    String emailNotification = emailController.text;
-    String pushNotification = pushNotificationController.text;
-    String smsNotification = smsController.text;
-
-    // Print or use the values as needed
+    // Simulate saving preferences
+    // In a real app, you would save these preferences to a database
+    // or use a notification service to subscribe/unsubscribe users
     print('Email Notification: $emailNotification');
     print('Push Notification: $pushNotification');
     print('SMS Notification: $smsNotification');
+
+    // Show confirmation message
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: secondary75,
+          title: Text('Preferences Saved'),
+          content: Text('Notification preferences have been saved.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
