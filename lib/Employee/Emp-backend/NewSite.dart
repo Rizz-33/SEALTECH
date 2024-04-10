@@ -29,7 +29,7 @@ class _DataPageState extends State<DataPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                'New Site',
+                'New Site', 
                 style: GoogleFonts.poppins(
                     textStyle: Theme.of(context).textTheme.displayLarge,
                     color: const Color.fromARGB(255, 70, 66, 68),

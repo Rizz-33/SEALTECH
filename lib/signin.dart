@@ -17,6 +17,7 @@ class SignInPage extends StatelessWidget {
 
   void signin(BuildContext context) async {
     final authService = AuthService();
+    
 
     try {
       await authService.signInWithEmailPassword(
