@@ -55,6 +55,7 @@ class SignUpPage extends StatelessWidget {
               const SizedBox(height: 60),
 
               //sign up text
+                
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Align(
@@ -179,7 +180,7 @@ class SignUpPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    const Text (
                       'Already have an account?',
                       style: TextStyle(
                         color: Colors.black,
