@@ -125,6 +125,7 @@ class Contact extends StatelessWidget {
   }
 }
 
+
 class ContactInfo extends StatelessWidget {
   final String label;
   final String value;
@@ -133,6 +134,7 @@ class ContactInfo extends StatelessWidget {
     required this.label,
     required this.value,
   });
+  
 
   @override
   Widget build(BuildContext context) {
