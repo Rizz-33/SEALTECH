@@ -21,7 +21,6 @@ class AuthGate extends StatelessWidget {
               return NavbarC();
             }
           }
-          // user is not logged in
           else {
             return const SigninOrSignup();
           }
@@ -30,12 +29,13 @@ class AuthGate extends StatelessWidget {
     );
   }
   
-  // method to check user role (admin/client)
   bool checkUserRole(User user) {
-    // Extracting the password from user email
-    String password = user.email!.split('@')[0].substring(1);
+    String email = user.email!;
     
-    // Check if the password starts with '101'
-    return password.startsWith('101');
+    if (email.endsWith('@sealtech.com')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
