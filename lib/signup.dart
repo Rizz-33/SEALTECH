@@ -3,6 +3,7 @@ import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/services/auth/auth_service.dart';
 
+
 class SignUpPage extends StatelessWidget {
   final void Function()? onTap;
 
@@ -16,7 +17,7 @@ class SignUpPage extends StatelessWidget {
 
     // signup method
   void signup(BuildContext context) {
-    // get auth service
+    // get auth services
     final _auth = AuthService();
 
     try {
