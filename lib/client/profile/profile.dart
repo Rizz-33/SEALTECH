@@ -54,7 +54,7 @@ class Profile extends StatelessWidget {
                     return Column(
                       children: [
                         Text(
-                          user?.displayName ?? 'No Name',
+                          user?.displayName ?? 'Amaya',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
