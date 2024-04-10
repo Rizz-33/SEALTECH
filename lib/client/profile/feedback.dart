@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sealtech/components/theme.dart';
 
+
 class FeedbackTemplate extends StatelessWidget {
   final String email;
   final List<IconData> stars;
   final String feedback;
   final String comment;
+  
 
   FeedbackTemplate({
     required this.email,
@@ -13,6 +15,8 @@ class FeedbackTemplate extends StatelessWidget {
     required this.feedback,
     required this.comment,
   });
+
+
 
   @override
   Widget build(BuildContext context) {
