@@ -15,6 +15,7 @@ class LoadingPage2 extends StatelessWidget {
             MaterialPageRoute(builder: (context) => SignInPage()),
           );
         },
+        
         child: Center(
           child: Image.asset('lib/images/logo-word-no-background.png', width: 160,),
         ),
