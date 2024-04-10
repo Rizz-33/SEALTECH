@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sealtech/Employee/Addnewlocation.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/profile/aboutUs.dart';
 import 'package:sealtech/client/profile/addFeedback.dart';
