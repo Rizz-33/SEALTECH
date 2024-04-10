@@ -17,7 +17,7 @@ class Button extends StatelessWidget {
     this.width = 400,
   });
 
-  Button.white({ // Add a new constructor for white color button
+  Button.white({
     required this.buttonText,
     this.enableIcon = true,
     required this.onPressed,
@@ -33,8 +33,8 @@ class Button extends StatelessWidget {
       buttonColor = Colors.black;
       borderColor = Colors.black;
     } else {
-      buttonColor = color == 'white' ? Colors.white : Color(0xFFFF8400);
-      borderColor = color == 'white' ? Colors.white : Color(0xFFFF8400);
+      buttonColor = color == 'white' ? Colors.white : const Color(0xFFFF8400);
+      borderColor = color == 'white' ? Colors.white : const Color(0xFFFF8400);
     }
 
     return Padding(
@@ -65,7 +65,7 @@ class Button extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  if (enableIcon) SizedBox(width: 10),
+                  if (enableIcon) const SizedBox(width: 10),
                   if (enableIcon)
                     Icon(
                       Icons.arrow_forward,

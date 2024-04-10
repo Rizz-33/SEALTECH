@@ -1,7 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart'; // Add this import
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Add this import
 import 'package:sealtech/components/button.dart';
 import 'package:sealtech/components/theme.dart';
 
@@ -61,7 +61,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -73,7 +73,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Give Us Feedback'),
+        title: const Text('Give Us Feedback'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -141,7 +141,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   },
                   maxLines: 3,
                 ),
-                SizedBox(height: 35),
+                const SizedBox(height: 35),
                 Text(
                   'Rate Us',
                   style: TextStyle(
@@ -150,7 +150,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 RatingBar.builder(
                   initialRating: _rating,
                   minRating: 1,
@@ -168,7 +168,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
                     });
                   },
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Button(
                   buttonText: 'Submit',
                   onPressed: _submit,

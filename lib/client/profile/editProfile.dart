@@ -24,19 +24,16 @@ class _EditProfileState extends State<EditProfile> {
       User? user = _auth.currentUser;
       
       try {
-        // Update user profile data in Firestore
         await FirebaseFirestore.instance.collection('users').doc(user!.uid).update({
           'name': _name,
           'email': _email,
         });
 
-        // Update user email
         await user.updateEmail(_email);
 
-        // Update user password
         await user.updatePassword(_password);
 
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Profile updated successfully')));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Profile updated successfully')));
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to update profile: $e')));
       }
@@ -47,11 +44,11 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView( // Wrap with SingleChildScrollView
+        child: SingleChildScrollView(
           child: Form(
             key: _formKey,
             child: Column(
@@ -117,7 +114,7 @@ class _EditProfileState extends State<EditProfile> {
                   },
                   obscureText: true,
                 ),
-                SizedBox(height: 32,),
+                const SizedBox(height: 32,),
                 Button(buttonText: 'Submit', onPressed: _submit, color: 'orange', enableIcon: false,)
               ],
             ),

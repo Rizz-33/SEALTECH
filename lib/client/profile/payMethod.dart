@@ -14,17 +14,16 @@ class _PaymentMethodState extends State<PaymentMethod> {
   void _submit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // TODO: Implement the logic to process the payment
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context); // Get the theme
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose Payment Method'),
+        title: const Text('Choose Payment Method'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -70,7 +69,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                   },
                 ),
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               Button(buttonText: 'Submit', onPressed: () {}, color: 'orange', enableIcon: false,)
             ],
           ),

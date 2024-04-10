@@ -107,9 +107,7 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              // Add the MyRandomProductWidget here
               RandomProductWidget(),
-              // More of your existing widgets...
               const SizedBox(
                 height: 8,
               ),

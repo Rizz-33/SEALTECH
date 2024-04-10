@@ -9,17 +9,17 @@ class MyReceipt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime currentTime = DateTime.now();
-    DateTime estimatedDeliveryTime = currentTime.add(Duration(minutes: 15));
+    DateTime estimatedDeliveryTime = currentTime.add(const Duration(minutes: 15));
 
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 15),
+        padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 15),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Thank you for your order !", style: TextStyle(color: primaryColor),),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -27,18 +27,18 @@ class MyReceipt extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                padding: EdgeInsets.all(25),
+                padding: const EdgeInsets.all(25),
                 child: Consumer<SealTech>(
                   builder: (context, product, child) =>
                       Text(product.displayCartReceipt()),
                 ),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Text(
                 "Estimated delivery time is: ${estimatedDeliveryTime.hour}:${estimatedDeliveryTime.minute}",
               ),
-              SizedBox(height: 25,),
-              Text('SEALTECH Waterproofing Company\n345,Colombo\n+94 11 124 4832', textAlign: TextAlign.center,)
+              const SizedBox(height: 25,),
+              const Text('SEALTECH Waterproofing Company\n345,Colombo\n+94 11 124 4832', textAlign: TextAlign.center,)
             ],
           ),
         ),

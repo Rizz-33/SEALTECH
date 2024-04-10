@@ -20,14 +20,12 @@ class _PaymentPageState extends State<PaymentPage> {
   bool isCvvFocused = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  // User wants to pay
   void userTappedPay() {
     if (formKey.currentState!.validate()) {
-      // Only show dialog if form is valid
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Confirm Payment"),
+          title: const Text("Confirm Payment"),
           content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,19 +38,17 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
           ),
           actions: [
-            // Cancel button
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text("Cancel", style: TextStyle(color: accentColor),),
             ),
 
-            // Yes
             TextButton(
               onPressed: () {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DeliveryProgressPage()),
+                MaterialPageRoute(builder: (context) => const DeliveryProgressPage()),
               );},
               child: Text("Yes", style: TextStyle(color: accentColor),),
             ),
@@ -67,7 +63,7 @@ class _PaymentPageState extends State<PaymentPage> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text('Checkout'),
+        title: const Text('Checkout'),
         backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
@@ -75,8 +71,7 @@ class _PaymentPageState extends State<PaymentPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              MyCurrentLocation(),
-              // Credit card
+              const MyCurrentLocation(),
               CreditCardWidget(
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
@@ -86,9 +81,8 @@ class _PaymentPageState extends State<PaymentPage> {
                 onCreditCardWidgetChange: (p0) {},
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-              // Credit card form
               CreditCardForm(
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
@@ -103,17 +97,16 @@ class _PaymentPageState extends State<PaymentPage> {
                   });
                 },
                 formKey: formKey,
-                
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               Button(
                 buttonText: "Pay Now",
                 onPressed: userTappedPay,
               ),
 
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
             ],
           ),
         ),

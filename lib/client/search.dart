@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sealtech/components/theme.dart';
 import 'package:sealtech/client/components/product.dart';
+import 'package:sealtech/components/theme.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -169,7 +169,7 @@ class _SearchState extends State<Search> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize:
-              MainAxisSize.min, // Set mainAxisSize to MainAxisSize.min
+              MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(16),

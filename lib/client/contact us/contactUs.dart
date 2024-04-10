@@ -17,10 +17,10 @@ class ContactUsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text('Contact Us'),
+        title: const Text('Contact Us'),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(right: 16.0),
             child: Image.asset('lib/images/logoIconBlack.png'),
           ),
         ],
@@ -29,22 +29,16 @@ class ContactUsPage extends StatelessWidget {
     );
   }
 
-  // Build a list of users except for the current logged-in user
   Widget _buildUserList() {
     return StreamBuilder(
       stream: _chatService.getUserStream(),
       builder: (context, snapshot) {
-        // Error
         if (snapshot.hasError) {
-          return Text('Error');
+          return const Text('Error');
         }
-
-        // Loading
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading...");
+          return const Text("Loading...");
         }
-
-        // Return list view
         return ListView(
           children: snapshot.data!.map<Widget>((userData) =>
               _buildUserListItem(userData, context)).toList(),
@@ -53,15 +47,12 @@ class ContactUsPage extends StatelessWidget {
     );
   }
 
-  // Build individual list tile for user
   Widget _buildUserListItem(Map<String, dynamic> userData, BuildContext context) {
-    // Display users except the current user
     if (userData['email'] != _authService.getCurrentUser()!.email) {
       return UserTile(
         text: userData['email'],
         isNewMessage: false,
         onTap: () {
-          // Tapped on a user -> go to chat
           Navigator.push(
               context,
               MaterialPageRoute(

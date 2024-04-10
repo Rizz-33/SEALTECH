@@ -29,7 +29,7 @@ class FeedbackTemplate extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: Padding(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: stars
@@ -42,28 +42,28 @@ class FeedbackTemplate extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 16, bottom: 50),
+                  padding: const EdgeInsets.only(left: 16, bottom: 50),
                   child: Icon(
                     Icons.person,
                     size: 48,
                     color: primary75,
                   ),
                 ),
-                SizedBox(width: 24),
+                const SizedBox(width: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 16),
+                      padding: const EdgeInsets.only(top: 16),
                       child: Text(feedback,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15,
                               color: Colors.black,
                               fontWeight: FontWeight.w600)),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(email,
-                        style: TextStyle(fontSize: 12, color: Colors.black)),
+                        style: const TextStyle(fontSize: 12, color: Colors.black)),
                   ],
                 ),
               ],
@@ -75,7 +75,7 @@ class FeedbackTemplate extends StatelessWidget {
                 width: MediaQuery.of(context).size.width - 32,
                 child: Text(
                   comment,
-                  style: TextStyle(fontSize: 13),
+                  style: const TextStyle(fontSize: 13),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),

@@ -14,14 +14,12 @@ class DeliveryProgressPage extends StatefulWidget {
 }
 
 class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
-  //get access to the database
   FirestoreService db = FirestoreService();
 
   @override
   void initState() {
     super.initState();
 
-    //submit order to the firestore db
     String receipt = context.read<SealTech>().displayCartReceipt();
     db.saveOrderToDatabase(receipt);
   }
@@ -31,11 +29,11 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text('Delivery In Progress'),
+        title: const Text('Delivery In Progress'),
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
             MyReceipt(),
@@ -45,21 +43,19 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
     );
   }
 
-  // Custom bottom navbar
   Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       height: 100,
       decoration: BoxDecoration(
         color: primary25,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(40),
           topRight: Radius.circular(40),
         ),
       ),
-      padding: EdgeInsets.all(25),
+      padding: const EdgeInsets.all(25),
       child: Row(
         children: [
-          // Profile image of driver
           Container(
             decoration: BoxDecoration(
               color: secondaryColor,
@@ -71,8 +67,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
             ),
           ),
 
-          SizedBox(width: 10,),
-          // Driver details
+          const SizedBox(width: 10,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -93,11 +88,10 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
             ],
           ),
 
-          Spacer(),
+          const Spacer(),
 
           Row(
             children: [
-              // Message button
               Container(
                 decoration: BoxDecoration(
                   color: bgColor,
@@ -109,9 +103,8 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
                 ),
               ),
 
-              SizedBox(width: 10,),
+              const SizedBox(width: 10,),
 
-              // Call button
               Container(
                 decoration: BoxDecoration(
                   color: bgColor,

@@ -11,12 +11,12 @@ class Tool extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text('Tools'),
+        title: const Text('Tools'),
         actions: [
           IconButton(
             icon: Image.asset('lib/images/logoIconBlack.png'),
@@ -27,9 +27,9 @@ class Tool extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Padding(
-              padding: EdgeInsets.all(25.0),
+              padding: const EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _buildToolCardPairs(context),
@@ -44,18 +44,14 @@ class Tool extends StatelessWidget {
   List<Widget> _buildToolCardPairs(BuildContext context) {
     final sealTech = Provider.of<SealTech>(context);
 
-    // Filter products by category "Tools"
     List<Product> toolProducts = sealTech.allproducts
         .where((product) => product.category == ProductCategory.Tools)
         .toList();
 
     List<Widget> pairs = [];
 
-    // Loop through toolProducts in pairs
     for (int i = 0; i < toolProducts.length; i += 2) {
-      // Check if there are at least two products left
       if (i + 1 < toolProducts.length) {
-        // Create a row with two tool cards
         pairs.add(
           Row(
             children: [
@@ -72,7 +68,7 @@ class Tool extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: GestureDetector(
                   onTap: () {
@@ -90,7 +86,6 @@ class Tool extends StatelessWidget {
           ),
         );
       } else {
-        // Create a row with only one tool card
         pairs.add(
           GestureDetector(
             onTap: () {

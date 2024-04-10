@@ -18,11 +18,10 @@ class QuantitySelector extends StatelessWidget {
         color: secondaryColor,
         borderRadius: BorderRadius.circular(50),
       ),
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          //decrease button
           GestureDetector(
             onTap: onDecrement,
             child: Icon(
@@ -32,13 +31,11 @@ class QuantitySelector extends StatelessWidget {
             ),
           ),
 
-          //quantity count
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: SizedBox(width: 20, child: Center(child: Text(quantity.toString(),))),
           ),
 
-          //increase button
           GestureDetector(
             onTap: onIncrement,
             child: Icon(

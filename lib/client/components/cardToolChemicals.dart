@@ -18,10 +18,8 @@ class ToolsChemCard extends StatefulWidget {
 class _ToolsChemCardState extends State<ToolsChemCard> {
 
   void addToCart(Product product){
-    //close the current product page to go back to menu
     Navigator.pop(context);
 
-    //add to cart
     context.read<SealTech>().addToCart(product);
   }
 
@@ -46,12 +44,12 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Image.asset(
                   widget.product.imagePath,
                   height: 250,
                 ),
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 Text(
                   widget.product.name,
                   style: TextStyle(
@@ -60,12 +58,12 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 6,),
+                const SizedBox(height: 6,),
                 Text(
                   '${_getCategoryString(widget.product.category)}',
                   style: TextStyle(color: accentColor),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -73,11 +71,11 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'Price: ',
                         style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                       ),
@@ -89,7 +87,7 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
                   ),
                 ),
         
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Button(
                   buttonText: _getButtonText(widget.product.category),
                   onPressed: () {
@@ -99,7 +97,7 @@ class _ToolsChemCardState extends State<ToolsChemCard> {
                   isStroked: false,
                   color: 'orange',
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
               ],
             ),
           ),

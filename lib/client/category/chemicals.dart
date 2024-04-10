@@ -11,17 +11,16 @@ class Chemical extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text('Chemicals'),
+        title: const Text('Chemicals'),
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              // Navigate to shopping cart page
               Navigator.pushNamed(context, '/shopping_cart');
             },
           ),
@@ -30,9 +29,9 @@ class Chemical extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Padding(
-              padding: EdgeInsets.all(25.0),
+              padding: const EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _buildChemicalCardPairs(context),
@@ -48,18 +47,14 @@ class Chemical extends StatelessWidget {
   List<Widget> _buildChemicalCardPairs(BuildContext context) {
     final sealTech = Provider.of<SealTech>(context);
 
-    // Filter products by category "Chemicals"
     List<Product> chemicalProducts = sealTech.allproducts
         .where((product) => product.category == ProductCategory.Chemicals)
         .toList();
 
     List<Widget> pairs = [];
 
-    // Loop through chemicalProducts in pairs
     for (int i = 0; i < chemicalProducts.length; i += 2) {
-      // Check if there are at least two products left
       if (i + 1 < chemicalProducts.length) {
-        // Create a row with two chemical cards
         pairs.add(
           Row(
             children: [
@@ -76,7 +71,7 @@ class Chemical extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: GestureDetector(
                   onTap: () {
@@ -94,7 +89,6 @@ class Chemical extends StatelessWidget {
           ),
         );
       } else {
-        // Create a row with only one chemical card
         pairs.add(
           GestureDetector(
             onTap: () {

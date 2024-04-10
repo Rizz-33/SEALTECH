@@ -11,12 +11,12 @@ class Service extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text('Services'),
+        title: const Text('Services'),
         actions: [
           IconButton(
             icon: Image.asset('lib/images/logoIconBlack.png'),
@@ -44,18 +44,14 @@ class Service extends StatelessWidget {
   List<Widget> _buildServiceCardPairs(BuildContext context) {
     final sealTech = Provider.of<SealTech>(context);
 
-    // Filter products by category "Services"
     List<Product> serviceProducts = sealTech.allproducts
         .where((product) => product.category == ProductCategory.Services)
         .toList();
 
     List<Widget> pairs = [];
 
-    // Loop through serviceProducts in pairs
     for (int i = 0; i < serviceProducts.length; i += 2) {
-      // Check if there are at least two products left
       if (i + 1 < serviceProducts.length) {
-        // Create a row with two service cards
         pairs.add(
           Row(
             children: [
@@ -72,7 +68,7 @@ class Service extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 20), // Add spacing between cards
+              const SizedBox(width: 20),
               Expanded(
                 child: GestureDetector(
                   onTap: () {
@@ -90,7 +86,6 @@ class Service extends StatelessWidget {
           ),
         );
       } else {
-        // Create a row with only one service card
         pairs.add(
           GestureDetector(
             onTap: () {

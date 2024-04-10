@@ -16,10 +16,8 @@ class SignInPage extends StatelessWidget {
   SignInPage({Key? key, this.onTap});
 
   void signin(BuildContext context) async {
-    // auth service
     final authService = AuthService();
 
-    // try log in
     try {
       await authService.signInWithEmailPassword(
         _emailController.text,
@@ -27,10 +25,8 @@ class SignInPage extends StatelessWidget {
         _nameController.text,
       );
 
-      // Extracting the password from user email
       String password = _emailController.text.split('@')[0].substring(3);
 
-      // Check if the password starts with '101'
       if (password.startsWith('101')) {
         Navigator.pushReplacement(
           context,
@@ -44,7 +40,6 @@ class SignInPage extends StatelessWidget {
       }
     }
 
-    // catch any errors
     catch (e) {
       showDialog(
         context: context,
@@ -64,7 +59,6 @@ class SignInPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // logo
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: Image.asset(
@@ -74,7 +68,6 @@ class SignInPage extends StatelessWidget {
               ),
               const SizedBox(height: 60),
 
-              // sign in text
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Align(
@@ -90,8 +83,6 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // email and password fields
               Form(
                 key: _formKey,
                 child: Column(
@@ -134,11 +125,11 @@ class SignInPage extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: '   Password',
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             color: Colors.grey,
                             fontSize: 16,
                           ),
-                          border: UnderlineInputBorder(),
+                          border: const UnderlineInputBorder(),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: accentColor),
                           ),
@@ -160,9 +151,8 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
 
-              // sign in button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Button(
@@ -174,9 +164,8 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
-              // new to sealtech
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

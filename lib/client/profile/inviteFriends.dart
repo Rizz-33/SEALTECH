@@ -14,21 +14,20 @@ class InviteFriends extends StatefulWidget {
 class _InviteFriendsState extends State<InviteFriends> {
   final _formKey = GlobalKey<FormState>();
   String _friendEmail = '';
-  String _userEmail = ''; // User's email obtained from AuthService
+  String _userEmail = '';
 
-  AuthService _authService = AuthService(); // Instance of AuthService
+  AuthService _authService = AuthService();
 
   @override
   void initState() {
     super.initState();
-    _getCurrentUserEmail(); // Call method to fetch current user's email
+    _getCurrentUserEmail();
   }
 
-  // Method to fetch current user's email
   void _getCurrentUserEmail() async {
     User? userData = await _authService.getCurrentUser();
     setState(() {
-      _userEmail = userData?.email ?? ''; // Set user's email
+      _userEmail = userData?.email ?? '';
     });
   }
 
@@ -36,27 +35,21 @@ class _InviteFriendsState extends State<InviteFriends> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       
-      // Email content
       String subject = 'Invitation to Join';
       String body = 'Hi there! I invite you to join our app.';
       
-      // Configure SMTP server details
-      final smtpServer = gmail(_userEmail, 'your_password'); // Replace with sender's email and password
+      final smtpServer = gmail(_userEmail, 'your_password');
       
-      // Create message
       final message = Message()
         ..from = Address(_userEmail)
         ..recipients.add(_friendEmail)
         ..subject = subject
         ..text = body;
       
-      // Send email
       try {
         await send(message, smtpServer);
-        // Email sent successfully
         print('Email sent successfully');
       } catch (e) {
-        // Failed to send email
         print('Error sending email: $e');
       }
     }
@@ -66,7 +59,7 @@ class _InviteFriendsState extends State<InviteFriends> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Invite Friends'),
+        title: const Text('Invite Friends'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -86,7 +79,7 @@ class _InviteFriendsState extends State<InviteFriends> {
               children: <Widget>[
                 TextFormField(
                   cursorColor: accent75,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Friend\'s Email',
                   ),
                   validator: (value) {
@@ -99,7 +92,7 @@ class _InviteFriendsState extends State<InviteFriends> {
                     _friendEmail = value!;
                   },
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Button(
                   buttonText: 'Submit',
                   onPressed: _submit,

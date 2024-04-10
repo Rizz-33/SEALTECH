@@ -14,9 +14,7 @@ class SignUpPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-    // signup method
   void signup(BuildContext context) {
-    // get auth service
     final _auth = AuthService();
 
     try {
@@ -47,14 +45,12 @@ class SignUpPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                //logo
               Padding(
                 padding: const EdgeInsets.only(top: 65),
                 child: Image.asset('lib/images/logo-no-background.png', width: 60,),
               ),
               const SizedBox(height: 60),
 
-              //sign up text
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Align(
@@ -71,7 +67,6 @@ class SignUpPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              //name field
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextFormField(
@@ -98,7 +93,6 @@ class SignUpPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-                //email and password fields
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: TextFormField(
@@ -129,18 +123,18 @@ class SignUpPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: TextFormField(
                     controller: _passwordController,
                     cursorColor: accentColor,
                     obscureText: true,
                     decoration: InputDecoration(
                       labelText: '   Password',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
                       ),
-                      border: UnderlineInputBorder(),
+                      border: const UnderlineInputBorder(),
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: accentColor),
                       ),
@@ -158,9 +152,8 @@ class SignUpPage extends StatelessWidget {
                 ),
 
                 
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
 
-              //sign in button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Button(
@@ -172,9 +165,8 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
-              //new to sealtech
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

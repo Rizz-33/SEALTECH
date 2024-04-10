@@ -15,7 +15,6 @@ class Message {
     required this.timestamp,
   });
 
-  //conver to a map
   Map<String, dynamic> toMap() {
     return {
       'senderID' : senderID,

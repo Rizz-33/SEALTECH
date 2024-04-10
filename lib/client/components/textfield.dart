@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
                 hintText: 'Message SEALTECH...',
                 filled: true,
                 fillColor: secondaryColor,
-                contentPadding: EdgeInsets.fromLTRB(24.0, 6.0, 12.0, 6.0),
+                contentPadding: const EdgeInsets.fromLTRB(24.0, 6.0, 12.0, 6.0),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(32.0),

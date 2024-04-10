@@ -7,17 +7,14 @@ import 'package:sealtech/client/profile/profile.dart' as fifthTab;
 import 'package:sealtech/client/search.dart' as thirdTab;
 import 'package:sealtech/components/theme.dart';
 
-//Initial widget
 class NavbarC extends StatefulWidget{
   @override
   HomeWidget createState() => HomeWidget();
 }
 
-//State<StatefulWidget> action method
 class HomeWidget extends State<NavbarC>{
   int _selectedTab = 0;
 
-  //Page controller
   final PageController _navPage = PageController(initialPage: 0);
 
   @override

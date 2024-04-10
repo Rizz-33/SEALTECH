@@ -57,7 +57,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                 ],
               ),
               if (showError)
-                Text(
+                const Text(
                   'You must agree to the terms and conditions to continue. *',
                   style: TextStyle(color: Colors.red),
                 ),

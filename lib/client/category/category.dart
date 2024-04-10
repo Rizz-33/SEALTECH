@@ -7,17 +7,17 @@ import 'package:sealtech/client/components/product.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
 import 'package:sealtech/client/models/product.dart';
 import 'package:sealtech/client/models/productCategories.dart';
-import 'package:sealtech/components/button.dart'; // Import the ProductPage widget
+import 'package:sealtech/components/button.dart';
 
 class Category extends StatelessWidget {
-  final SealTech sealTech = SealTech(); // Initialize your SealTech class
+  final SealTech sealTech = SealTech();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(right: 16.0),
+        title: const Padding(
+          padding: EdgeInsets.only(right: 16.0),
           child: Text('Category'),
         ),
         actions: [
@@ -37,7 +37,7 @@ class Category extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     GestureDetector(
@@ -176,19 +176,19 @@ class Category extends StatelessWidget {
                     ),
                   ],
                 ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildCategorySection(
               context,
               "Services",
               sealTech.allproducts.where((product) => product.category == ProductCategory.Services).toList(),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildCategorySection(
               context,
               "Tools",
               sealTech.allproducts.where((product) => product.category == ProductCategory.Tools).toList(),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildCategorySection(
               context,
               "Chemicals",
@@ -208,16 +208,16 @@ class Category extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16),
           child: Text(
             categoryTitle,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.only(left: 6),
+          padding: const EdgeInsets.only(left: 6),
           child: Row(
             children: [
               for (final item in categoryItems)

@@ -21,7 +21,7 @@ class RandomProductWidget extends StatelessWidget {
     final List<Product> randomProducts = _getRandomProducts(5);
     return randomProducts.map((product) {
       return Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: _buildProductCard(context, product),
       );
     }).toList();
@@ -75,10 +75,8 @@ class RandomProductWidget extends StatelessWidget {
 
   String _getFormattedPrice(Product product) {
     if (product.category == ProductCategory.Services) {
-      // Price in million LKR for services
       return '${(product.price).toStringAsFixed(2)} million LKR';
     } else {
-      // Price in LKR for other categories
       return '${product.price.toStringAsFixed(2)} LKR';
     }
   }

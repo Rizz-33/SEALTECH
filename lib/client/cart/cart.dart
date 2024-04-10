@@ -13,13 +13,11 @@ class Cart extends StatelessWidget {
       builder: (context, sealtech, child) {
         final userCart = sealtech.cart;
 
-        // Calculate subtotal
         double subtotal = 0.0;
         for (final cartItem in userCart) {
           subtotal += cartItem.product.price * cartItem.quantity;
         }
 
-        // Calculate total price including delivery fee and discount
         double deliveryFee = 200.0;
         double discount = 0.0;
         double totalPrice = subtotal + deliveryFee - discount;
@@ -36,7 +34,7 @@ class Cart extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: Text(
+                      title: const Text(
                         "Are you sure you want to clear the cart?",
                         style: TextStyle(fontSize: 20),
                       ),
@@ -62,7 +60,7 @@ class Cart extends StatelessWidget {
                     ),
                   );
                 },
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
               ),
             ],
           ),
@@ -81,7 +79,7 @@ class Cart extends StatelessWidget {
                       )
                     : ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: userCart.length,
                         itemBuilder: (context, index) {
                           final cartItem = userCart[index];
@@ -91,12 +89,12 @@ class Cart extends StatelessWidget {
                 const SizedBox(height: 20),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
+                        padding: EdgeInsets.only(left: 16.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             'Sub Total',
                             style: TextStyle(
                               fontSize: 16,
@@ -116,15 +114,15 @@ class Cart extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
+                        padding: EdgeInsets.only(left: 16.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             'Delivery Fee',
                             style: TextStyle(
                               fontSize: 16,
@@ -144,15 +142,15 @@ class Cart extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
+                        padding: EdgeInsets.only(left: 16.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             'Discount',
                             style: TextStyle(
                               fontSize: 16,
@@ -172,17 +170,17 @@ class Cart extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 16),
-                Divider(),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
+                const Divider(),
+                const SizedBox(height: 16),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
+                        padding: EdgeInsets.only(left: 16.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             'Total Price',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -203,12 +201,12 @@ class Cart extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Button(
                   buttonText: 'Proceed to Checkout',
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PaymentPage()),
+                    MaterialPageRoute(builder: (context) => const PaymentPage()),
                   ),
                   color: 'orange',
                   enableIcon: true,

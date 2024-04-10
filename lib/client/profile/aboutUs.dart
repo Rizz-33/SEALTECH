@@ -46,7 +46,7 @@ class _AboutUsState extends State<AboutUs> {
 
   bool _isBoxVisible(double screenHeight) {
     RenderBox? renderBox =
-        context.findRenderObject() as RenderBox; // Find the render object
+        context.findRenderObject() as RenderBox;
     double boxPosition = renderBox.localToGlobal(Offset.zero).dy;
     return boxPosition < screenHeight;
   }
@@ -72,10 +72,10 @@ class _AboutUsState extends State<AboutUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        title: const Text('About Us'),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(right: 16.0),
             child: Image.asset('lib/images/logoIconBlack.png'),
           ),
         ],
@@ -83,25 +83,25 @@ class _AboutUsState extends State<AboutUs> {
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16,),
+              const SizedBox(height: 16,),
               Text(
                 'Waterproof  |  Seal  |  Protection',
                 style: TextStyle(color: primaryColor),
                 textAlign: TextAlign.left,
               ),
-              Text(
+              const Text(
                 'About Our Company SEALTECH',
                 textAlign: TextAlign.left,
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Image.asset('lib/images/aboutus1.png'),
-              SizedBox(height: 30,),
-              Text.rich(
+              const SizedBox(height: 30,),
+              const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
@@ -121,10 +121,10 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 textAlign: TextAlign.justify,
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Image.asset('lib/images/aboutus2.png'),
-              SizedBox(height: 30,),
-              Text.rich(
+              const SizedBox(height: 30,),
+              const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
@@ -144,8 +144,8 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 textAlign: TextAlign.justify,
               ),
-              SizedBox(height: 20,),
-              Text.rich(
+              const SizedBox(height: 20,),
+              const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
@@ -165,11 +165,11 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 textAlign: TextAlign.justify,
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Center(
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     color: primary25,
                     borderRadius: BorderRadius.circular(10.0),
@@ -178,7 +178,7 @@ class _AboutUsState extends State<AboutUs> {
                         color: const Color.fromARGB(255, 209, 209, 209).withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -192,7 +192,7 @@ class _AboutUsState extends State<AboutUs> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Projects Done',
                         style: TextStyle(
                           fontSize: 20,
@@ -203,13 +203,13 @@ class _AboutUsState extends State<AboutUs> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: primary50,
                         borderRadius: BorderRadius.circular(10.0),
@@ -221,8 +221,8 @@ class _AboutUsState extends State<AboutUs> {
                             color: primaryColor,
                             size: 40,
                           ),
-                          SizedBox(height: 10,),
-                          Text(
+                          const SizedBox(height: 10,),
+                          const Text(
                             'Quality Assurance',
                             style: TextStyle(
                               color: Colors.black,
@@ -235,11 +235,11 @@ class _AboutUsState extends State<AboutUs> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 20,),
+                  const SizedBox(width: 20,),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.all(16.0),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: const BoxDecoration(
                       ),
                       child: Column(
                         children: [
@@ -248,8 +248,8 @@ class _AboutUsState extends State<AboutUs> {
                             color: primaryColor,
                             size: 40,
                           ),
-                          SizedBox(height: 10,),
-                          Text(
+                          const SizedBox(height: 10,),
+                          const Text(
                             'Customer Satisfaction',
                             style: TextStyle(
                               color: Colors.black,
@@ -264,8 +264,8 @@ class _AboutUsState extends State<AboutUs> {
                   ),
                 ],
               ),
-              SizedBox(height: 30,),
-              Text.rich(
+              const SizedBox(height: 30,),
+              const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
@@ -285,8 +285,8 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 textAlign: TextAlign.justify,
               ),
-              SizedBox(height: 20,),
-              Text.rich(
+              const SizedBox(height: 20,),
+              const Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
@@ -306,16 +306,16 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 textAlign: TextAlign.justify,
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Image.asset('lib/images/aboutus3.jpg'),
-              SizedBox(height: 50,),
+              const SizedBox(height: 50,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: [
-                    SizedBox(height: 50,),
-                    Text('Designed and developed by\nundergraduate students\nfrom University of Plymouth, The UK.', style: TextStyle(fontSize: 14),),
-                    Spacer(),
+                    const SizedBox(height: 50,),
+                    const Text('Designed and developed by\nundergraduate students\nfrom University of Plymouth, The UK.', style: TextStyle(fontSize: 14),),
+                    const Spacer(),
                     GestureDetector(
                       onTap: () {
                         launch('https://www.plymouth.ac.lk/');
@@ -325,7 +325,7 @@ class _AboutUsState extends State<AboutUs> {
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
             ],
           ),
         ),

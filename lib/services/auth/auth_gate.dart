@@ -14,7 +14,6 @@ class AuthGate extends StatelessWidget {
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, AsyncSnapshot<User?> snapshot) {
-          // user logged in
           if (snapshot.hasData) {
             if (checkUserRole(snapshot.data!)) {
               return NavbarE();
