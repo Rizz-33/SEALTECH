@@ -86,7 +86,7 @@ class SignUpPage extends StatelessWidget {
                       fontSize: 16,
                     ),
                     border: const UnderlineInputBorder(),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: UnderlineInputBorder (
                       borderSide: BorderSide(color: accentColor),
                     ),
                   ),
@@ -109,7 +109,7 @@ class SignUpPage extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: '   Email',
                       labelStyle: const TextStyle(
-                        color: Colors.grey,
+                        color: Colors.grey ,
                         fontSize: 16,
                       ),
                       border: const UnderlineInputBorder(),
