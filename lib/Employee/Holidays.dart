@@ -156,7 +156,7 @@ class _Holiday_PageState extends State<Holiday_Page> {
                           'May Day',
                           style:
                               TextStyle(color: Color.fromARGB(255, 75, 74, 74)),
-                        ),
+                         ),
                         Text(
                           '1st May 2024',
                           style:
@@ -170,6 +170,7 @@ class _Holiday_PageState extends State<Holiday_Page> {
                   ),
                   Container(
                     height: 50,
+                    
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: secondaryColor,
