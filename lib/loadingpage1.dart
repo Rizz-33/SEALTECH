@@ -10,6 +10,7 @@ class LoadingPage1 extends StatelessWidget {
         child: Image.asset(
           'lib/images/logo-no-background.png',
           width: 60,
+          
         ),
       ),
     );
