@@ -12,7 +12,8 @@ class UserDetailsPage extends StatefulWidget {
     required this.deadline,
     required this.address,
     required this.duePayment,
-  });
+  }
+);
 
   @override
   State<UserDetailsPage> createState() => _UserDetailsPageState();
@@ -26,6 +27,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
         title: Padding(
           padding: const EdgeInsets.only(left: 10, right: 10),
           child: Row(
+            
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Text(
@@ -34,6 +36,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                   textStyle: Theme.of(context).textTheme.displayLarge,
                   color: const Color.fromARGB(255, 70, 66, 68),
                   fontSize: 18,
+                  
                   fontWeight: FontWeight.w600,
                 ),
               ),
