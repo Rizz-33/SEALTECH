@@ -20,20 +20,37 @@ class _EditProfileState extends State<EditProfile> {
   void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      
+
       User? user = _auth.currentUser;
-      
+
       try {
-        await FirebaseFirestore.instance.collection('users').doc(user!.uid).update({
+        await FirebaseFirestore.instance.collection("Users").doc(user!.uid).update({
           'name': _name,
           'email': _email,
         });
 
-        await user.updateEmail(_email);
+        if (user.email != _email) {
+          var authResult = await user.reauthenticateWithCredential(
+            EmailAuthProvider.credential(email: user.email!, password: _password),
+          );
+          
+          if (authResult.user != null) {
+            await user.updateEmail(_email);
+          }
+        }
 
-        await user.updatePassword(_password);
+        if (_password.isNotEmpty) {
+          await user.updatePassword(_password);
+        }
 
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Profile updated successfully')));
+        // Navigate to previous page on successful update
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'requires-recent-login') {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please reauthenticate to update profile')));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to update profile: $e')));
+        }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to update profile: $e')));
       }
