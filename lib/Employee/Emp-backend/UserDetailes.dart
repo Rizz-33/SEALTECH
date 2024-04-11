@@ -12,7 +12,8 @@ class UserDetailsPage extends StatefulWidget {
     required this.deadline,
     required this.address,
     required this.duePayment,
-  });
+  }
+);
 
   @override
   State<UserDetailsPage> createState() => _UserDetailsPageState();
