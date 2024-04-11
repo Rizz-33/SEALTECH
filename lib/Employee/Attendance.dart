@@ -10,6 +10,7 @@ class Employee {
   DateTime? attendanceTime;
 
   Employee(
+    
       {required this.id,
       required this.name,
       this.isPresent = false,
