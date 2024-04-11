@@ -5,7 +5,8 @@ import 'package:sealtech/components/theme.dart';
 class Holiday_Page extends StatefulWidget {
   const Holiday_Page({
     super.key,
-  });
+  }
+);
 
   @override
   State<Holiday_Page> createState() => _Holiday_PageState();
@@ -221,6 +222,7 @@ class _Holiday_PageState extends State<Holiday_Page> {
                   const SizedBox(
                     height: 10,
                   ),
-                ]))));
+                ]
+                             ))));
   }
 }
