@@ -13,6 +13,7 @@ class PrivacyPolicyPage extends StatefulWidget {
 class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   bool isChecked = false;
   bool showError = false;
+  
 
   @override
   Widget build(BuildContext context) {
