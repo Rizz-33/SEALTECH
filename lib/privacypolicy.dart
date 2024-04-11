@@ -21,6 +21,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
         title: const Text(
           'Privacy and Security',
           style: TextStyle(fontWeight: FontWeight.w600),
+          
         ),
         centerTitle: true,
         toolbarHeight: kToolbarHeight + MediaQuery.of(context).padding.top,
