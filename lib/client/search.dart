@@ -1,7 +1,9 @@
-import 'dart:math'; // Import 'dart:math' library for random number generation
+import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:sealtech/client/components/product.dart';
+import 'package:sealtech/client/components/cardToolChemicals.dart';
+import 'package:sealtech/client/models/product.dart';
+import 'package:sealtech/client/models/productCategories.dart';
 import 'package:sealtech/components/theme.dart';
 
 class Search extends StatefulWidget {
@@ -10,92 +12,16 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List<ProductPage> products = [
-    const ProductPage(
-        imagePath: 'lib/images/Pool Waterproofing.jpeg',
-        title: 'Pool Waterproofing',
-        subtitle: 'Service',
-        price: '3 million LKR +'),
-    const ProductPage(
-        imagePath: 'lib/images/Roof Waterproofing.jpeg',
-        title: 'Roof Waterproofing',
-        subtitle: 'Service',
-        price: '1 million LKR +'),
-    const ProductPage(
-        imagePath: 'lib/images/Basement Sealing.jpeg',
-        title: 'Basement Sealing',
-        subtitle: 'Service',
-        price: '1.5 million LKR +'),
-    const ProductPage(
-        imagePath: 'lib/images/Side walls Sealing.jpeg',
-        title: 'Side walls Sealing',
-        subtitle: 'Service',
-        price: '2 million LKR +'),
-    const ProductPage(
-        imagePath: 'lib/images/Concrete Sealing.jpeg',
-        title: 'Concrete Sealing',
-        subtitle: 'Service',
-        price: '1 million LKR +'),
-    const ProductPage(
-        imagePath: 'lib/images/Drill Machine.jpeg',
-        title: 'Drill Machine',
-        subtitle: 'Tool',
-        price: '9 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Screwdriver Set.jpg',
-        title: 'Screwdriver Set',
-        subtitle: 'Tool',
-        price: '12 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Circular Saw.jpeg',
-        title: 'Circular Saw',
-        subtitle: 'Tool',
-        price: '5 000 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Adjustable Wrench.jpg',
-        title: 'Adjustable Wrench',
-        subtitle: 'Tool',
-        price: '7 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Pipe Wrench.jpeg',
-        title: 'Pipe Wrench',
-        subtitle: 'Tool',
-        price: '3 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Wood Protector.jpeg',
-        title: 'Wood Protector',
-        subtitle: 'Chemical',
-        price: '9 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Waterproof Sealant.png',
-        title: 'Waterproof Sealant',
-        subtitle: 'Chemical',
-        price: '12 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Surface Cleaner.jpeg',
-        title: 'Surface Cleaner',
-        subtitle: 'Chemical',
-        price: '5 000 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Mold Inhibitor Spray.jpeg',
-        title: 'Mold Inhibitor Spray',
-        subtitle: 'Chemical',
-        price: '7 500 LKR'),
-    const ProductPage(
-        imagePath: 'lib/images/Wood Protector.jpeg',
-        title: 'Wood Protector',
-        subtitle: 'Chemical',
-        price: '9 500 LKR'),
-  ];
+  final SealTech _sealTech = SealTech();
 
-  List<ProductPage> filteredProducts = [];
+  List<Product> filteredProducts = [];
   List<String> displayedProductNames = [];
 
   TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
-    filteredProducts = products;
+    filteredProducts = _sealTech.allproducts;
     displayedProductNames = getRandomProductNames();
     super.initState();
   }
@@ -103,12 +29,12 @@ class _SearchState extends State<Search> {
   void filterProducts(String query) {
     setState(() {
       if (query.isEmpty) {
-        filteredProducts = products;
+        filteredProducts = _sealTech.allproducts;
       } else {
-        filteredProducts = products
+        filteredProducts = _sealTech.allproducts
             .where((product) =>
-                product.title.toLowerCase().contains(query.toLowerCase()) ||
-                product.subtitle.toLowerCase().contains(query.toLowerCase()))
+                product.name.toLowerCase().contains(query.toLowerCase()) ||
+                product.description.toLowerCase().contains(query.toLowerCase()))
             .toList();
       }
     });
@@ -120,10 +46,10 @@ class _SearchState extends State<Search> {
   }
 
   List<String> getRandomProductNames() {
-    List<ProductPage> shuffledProducts = List.from(filteredProducts)..shuffle();
+    List<Product> shuffledProducts = List.from(filteredProducts)..shuffle();
     List<String> randomProductNames = shuffledProducts
         .sublist(0, min(5, shuffledProducts.length))
-        .map((product) => product.title)
+        .map((product) => product.name)
         .toList();
     return randomProductNames;
   }
@@ -142,8 +68,17 @@ class _SearchState extends State<Search> {
 
   void showAllProducts() {
     setState(() {
-      displayedProductNames = filteredProducts.map((product) => product.title).toList();
+      displayedProductNames = filteredProducts.map((product) => product.name).toList();
     });
+  }
+
+  void navigateToProductDetails(Product product) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ToolsChemCard(product: product),
+      ),
+    );
   }
 
   @override
@@ -170,7 +105,7 @@ class _SearchState extends State<Search> {
                 cursorColor: accent75,
                 onChanged: filterProducts,
                 decoration: InputDecoration(
-                  hintText: 'Search by Names, Categories or Keywords',
+                  hintText: 'Search by Names or Descriptions',
                   hintStyle: const TextStyle(fontSize: 14),
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: _searchController.text.isNotEmpty
@@ -231,9 +166,16 @@ class _SearchState extends State<Search> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 16),
-                      child: Text(
-                        displayedProductNames[index],
-                        textAlign: TextAlign.left,
+                      child: GestureDetector(
+                        onTap: () => navigateToProductDetails(
+                          filteredProducts.firstWhere(
+                            (product) => product.name == displayedProductNames[index],
+                          ),
+                        ),
+                        child: Text(
+                          displayedProductNames[index],
+                          textAlign: TextAlign.left,
+                        ),
                       ),
                     ),
                     IconButton(
@@ -261,11 +203,14 @@ class _SearchState extends State<Search> {
               itemCount: filteredProducts.length,
               itemBuilder: (context, index) {
                 final product = filteredProducts[index];
-                return ListTile(
-                  title: Text(product.title),
-                  subtitle: Text(product.subtitle),
-                  trailing: Text(product.price),
-                  leading: Image.asset(product.imagePath),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ListTile(
+                    onTap: () => navigateToProductDetails(product),
+                    title: Text(product.name),
+                    trailing: Text('${product.price} LKR'),
+                    leading: Image.asset(product.imagePath),
+                  ),
                 );
               },
             ),
