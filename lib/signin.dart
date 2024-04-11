@@ -25,6 +25,7 @@ class SignInPage extends StatelessWidget {
         _passwordController.text,
         _nameController.text,
       );
+      
 
       String password = _emailController.text.split('@')[0].substring(3);
 
