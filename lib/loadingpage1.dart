@@ -11,6 +11,7 @@ class LoadingPage1 extends StatelessWidget {
           'lib/images/logo-no-background.png',
           width: 60,
           
+          
         ),
       ),
     );
