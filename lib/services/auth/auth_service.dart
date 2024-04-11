@@ -7,21 +7,18 @@ class AuthService {
 
   Stream<User?> get userStream => _auth.authStateChanges();
 
-  User? getCurrentUser() {
-    return _auth.currentUser;
-  }
+  User? getCurrentUser() => _auth.currentUser;
 
   Future<UserCredential> signInWithEmailPassword(
-      String email, password, String name) async {
+      String email, String password, String name) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      await _firestore.collection("Users").doc(userCredential.user!.uid).set({
-        'uid': userCredential.user!.uid,
-        'email': email,
-        'name': name,
-      });
+      await _updateUserData(userCredential.user!.uid, email, name);
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -30,16 +27,15 @@ class AuthService {
   }
 
   Future<UserCredential> signUpWithEmailAndPassword(
-      String email, password, String name) async {
+      String email, String password, String name) async {
     try {
-      UserCredential userCredential = await _auth
-          .createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      await _firestore.collection("Users").doc(userCredential.user!.uid).set({
-        'uid': userCredential.user!.uid,
-        'email': email,
-        'name': name,
-      });
+      await _updateUserData(userCredential.user!.uid, email, name);
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -49,5 +45,14 @@ class AuthService {
 
   Future<void> signOut() async {
     return await _auth.signOut();
+  }
+
+  Future<void> _updateUserData(
+      String uid, String email, String name) async {
+    await _firestore.collection("Users").doc(uid).set({
+      'uid': uid,
+      'email': email,
+      'name': name,
+    });
   }
 }

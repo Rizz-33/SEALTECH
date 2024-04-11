@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/contact%20us/contactUs.dart';
@@ -41,7 +42,6 @@ class Profile extends StatelessWidget {
             children: [
               Icon(Icons.person, size: 100, color: primaryColor),
               const SizedBox(height: 8.0),
-              // Display user details here
               StreamBuilder<User?>(
                 stream: _authService.userStream,
                 builder: (context, snapshot) {
@@ -51,24 +51,45 @@ class Profile extends StatelessWidget {
                     return Text('Error loading user data');
                   } else {
                     final user = snapshot.data;
-                    return Column(
-                      children: [
-                        Text(
-                          user?.displayName ?? 'No Name',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Text(
-                          user?.email ?? 'No Email',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ],
+                    return FutureBuilder<DocumentSnapshot>(
+                      future: FirebaseFirestore.instance
+                          .collection('Users')
+                          .doc(user!.uid)
+                          .get(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<DocumentSnapshot> snapshot) {
+                        if (snapshot.hasError) {
+                          return Text("Something went wrong");
+                        }
+
+                        if (snapshot.connectionState ==
+                            ConnectionState.done) {
+                          Map<String, dynamic> data =
+                              snapshot.data!.data() as Map<String, dynamic>;
+                          String name = data['name'];
+                          return Column(
+                            children: [
+                              Text(
+                                name,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 8.0),
+                              Text(
+                                user.email ?? 'No Email',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+
+                        return CircularProgressIndicator();
+                      },
                     );
                   }
                 },
@@ -93,7 +114,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Edit Profile'),
@@ -122,7 +143,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Payment Method'),
@@ -151,7 +172,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Order History'),
@@ -180,7 +201,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Give us Feedback'),
@@ -209,7 +230,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Invite Friends'),
@@ -238,7 +259,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Help Center'),
@@ -267,7 +288,7 @@ class Profile extends StatelessWidget {
                     elevation: 0,
                     minimumSize: const Size(120, 40),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('About Us'),
