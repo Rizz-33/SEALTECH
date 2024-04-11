@@ -9,7 +9,6 @@ class PrivacyPolicyPage extends StatefulWidget {
   @override
   _PrivacyPolicyPageState createState() => _PrivacyPolicyPageState();
 }
-
 class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   bool isChecked = false;
   bool showError = false;
