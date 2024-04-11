@@ -318,7 +318,8 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                         .updateEmployeeDetails(id, updateInfo)
                         .then((value) {
                       Navigator.pop(context);
-                    });
+                    }
+                  );
                   },
                   child: Text("update"),
                 ),
