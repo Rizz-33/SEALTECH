@@ -12,6 +12,7 @@ class DatabaseMethods {
 
   Future updateEmployeeDetails(String id, Map<String, dynamic> updateInfo) async {
     return await FirebaseFirestore.instance.collection("Employee").doc(id).update(updateInfo);
+    
   }
 
   Future deleteEmployee(String id) async {
