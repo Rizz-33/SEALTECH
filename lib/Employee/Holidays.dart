@@ -16,6 +16,7 @@ class _Holiday_PageState extends State<Holiday_Page> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          
           title: Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Row(
@@ -61,7 +62,8 @@ class _Holiday_PageState extends State<Holiday_Page> {
                           child: Image.asset(
                             'lib/images/Holiday.png',
                             height: 200,
-                          )),
+                          )
+                      ),
                     ],
                   ),
                   Container(
@@ -221,6 +223,10 @@ class _Holiday_PageState extends State<Holiday_Page> {
                   const SizedBox(
                     height: 10,
                   ),
-                ]))));
+                ]
+                             )
+            )
+        )
+    );
   }
 }
