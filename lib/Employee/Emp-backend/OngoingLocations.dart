@@ -228,6 +228,7 @@ class _OngoingLocationsState extends State<OngoingLocations> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    
                   ],
                 ),
                 const SizedBox(
