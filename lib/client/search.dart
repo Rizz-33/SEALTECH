@@ -1,3 +1,5 @@
+import 'dart:math'; // Import 'dart:math' library for random number generation
+
 import 'package:flutter/material.dart';
 import 'package:sealtech/client/components/product.dart';
 import 'package:sealtech/components/theme.dart';
@@ -87,12 +89,14 @@ class _SearchState extends State<Search> {
   ];
 
   List<ProductPage> filteredProducts = [];
+  List<String> displayedProductNames = [];
 
   TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     filteredProducts = products;
+    displayedProductNames = getRandomProductNames();
     super.initState();
   }
 
@@ -115,41 +119,30 @@ class _SearchState extends State<Search> {
     filterProducts('');
   }
 
-  List<String> additionalRows = [
-    'Additional Row 1',
-    'Additional Row 2',
-    'Additional Row 3',
-    'Additional Row 4',
-    'Additional Row 5',
-  ];
+  List<String> getRandomProductNames() {
+    List<ProductPage> shuffledProducts = List.from(filteredProducts)..shuffle();
+    List<String> randomProductNames = shuffledProducts
+        .sublist(0, min(5, shuffledProducts.length))
+        .map((product) => product.title)
+        .toList();
+    return randomProductNames;
+  }
 
-  List<String> originalRows = [
-    'Additional Row 1',
-    'Additional Row 2',
-    'Additional Row 3',
-    'Additional Row 4',
-    'Additional Row 5',
-  ];
-
-  bool isCleared = false;
-
-  void removeRow(int index) {
+  void removeProductFromDisplay(String productName) {
     setState(() {
-      additionalRows.removeAt(index);
+      displayedProductNames.remove(productName);
     });
   }
 
-  void removeAllRows() {
+  void removeAllProductsFromDisplay() {
     setState(() {
-      additionalRows.clear();
-      isCleared = true;
+      displayedProductNames.clear();
     });
   }
 
-  void showAllRows() {
+  void showAllProducts() {
     setState(() {
-      additionalRows = List.from(originalRows);
-      isCleared = false;
+      displayedProductNames = filteredProducts.map((product) => product.title).toList();
     });
   }
 
@@ -168,8 +161,7 @@ class _SearchState extends State<Search> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisSize:
-              MainAxisSize.min,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(16),
@@ -212,11 +204,15 @@ class _SearchState extends State<Search> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: isCleared ? showAllRows : removeAllRows,
+                  onTap: displayedProductNames.length != filteredProducts.length
+                      ? showAllProducts
+                      : removeAllProductsFromDisplay,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 16),
                     child: Text(
-                      isCleared ? 'Show All' : 'Clear All',
+                      displayedProductNames.length != filteredProducts.length
+                          ? 'Show All'
+                          : 'Clear All',
                       textAlign: TextAlign.right,
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: primaryColor),
@@ -228,7 +224,7 @@ class _SearchState extends State<Search> {
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: additionalRows.length,
+              itemCount: displayedProductNames.length,
               itemBuilder: (context, index) {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -236,7 +232,7 @@ class _SearchState extends State<Search> {
                     Padding(
                       padding: const EdgeInsets.only(left: 16),
                       child: Text(
-                        additionalRows[index],
+                        displayedProductNames[index],
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -246,7 +242,7 @@ class _SearchState extends State<Search> {
                         size: 18,
                       ),
                       onPressed: () {
-                        removeRow(index);
+                        removeProductFromDisplay(displayedProductNames[index]);
                       },
                     ),
                   ],
