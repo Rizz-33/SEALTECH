@@ -203,4 +203,8 @@ class SealTech extends ChangeNotifier {
   String _formatPrice(double price) {
     return "${price.toStringAsFixed(2)} LKR";
   }
+
+  String formatPrice(double price) {
+    return _formatPrice(price);
+  }
 }

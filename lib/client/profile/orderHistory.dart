@@ -7,34 +7,28 @@ class OrderHistory extends StatefulWidget {
 }
 
 class _OrderHistoryState extends State<OrderHistory> {
-  //backend
   List<Map<String, dynamic>> _orders = [
     {'id': '1', 'date': '2022-01-01', 'total': 100.0},
     {'id': '2', 'date': '2022-01-02', 'total': 200.0},
-    {'id': '3', 'date': '2022-01-03', 'total': 300.0},
+    {'id': '9076', 'date': '2024-04-11', 'total': 30300.0},
   ];
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> mostRecentOrder = _orders.isNotEmpty ? _orders.last : {};
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Order History'),
       ),
       body: SingleChildScrollView(
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: _orders.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text('Order ID: ${_orders[index]['id']}'),
-              subtitle: Text('Date: ${_orders[index]['date']}'),
-              trailing: Text(
-                'Total: \$${_orders[index]['total']}',
-                style: TextStyle(color: accentColor),
-              ),
-            );
-          },
+        child: ListTile(
+          title: Text('Order ID: ${mostRecentOrder['id']}'),
+          subtitle: Text('Date: ${mostRecentOrder['date']}'),
+          trailing: Text(
+            'Total: ${mostRecentOrder['total']} LKR',
+            style: TextStyle(color: accentColor),
+          ),
         ),
       ),
     );
