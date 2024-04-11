@@ -12,6 +12,7 @@ class Salary_Page extends StatefulWidget {
   State<Salary_Page> createState() => _Salary_PageState();
 }
 
+
 class _Salary_PageState extends State<Salary_Page> {
   double basicSalary = 0.00;
   double overtimeHours = 0.00;
