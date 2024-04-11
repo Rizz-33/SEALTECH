@@ -5,6 +5,7 @@ import 'package:sealtech/signup.dart';
 
 class PrivacyPolicyPage extends StatefulWidget {
   const PrivacyPolicyPage({Key? key}) : super(key: key);
+  
 
   @override
   _PrivacyPolicyPageState createState() => _PrivacyPolicyPageState();
