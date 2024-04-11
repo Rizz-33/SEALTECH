@@ -28,6 +28,7 @@ class _Salary_PageState extends State<Salary_Page> {
       calculatedSalary = basicSalary + 2000.00 * overtimeHours;
     }
   }
+  
 
   @override
   Widget build(BuildContext context) {
