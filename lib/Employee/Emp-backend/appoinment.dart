@@ -68,7 +68,8 @@ class _appointmentpState extends State<appointmentp> {
                 ),
                 width: 270,
                 height: 190,
-              )),
+              )
+              ),
               TextFormField(
                 controller: nameController,
                 decoration: InputDecoration(labelText: 'Your Name'),
