@@ -17,6 +17,7 @@ The SEALTECH Waterproofing Company App Development Project aims to revolutionize
 
 ### Design 
 - Figma: A tool that utilized for UI/UX design within the SEALTECH Waterproofing Company app development project.
+link : https://www.figma.com/file/eQWQXOwH0tP0X5vs9u9y6L/Sealtech?type=design&node-id=30-2&mode=design&t=6goAr0g0SXfNZjxU-0
 
 ### Frontend
 - Flutter: A UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
